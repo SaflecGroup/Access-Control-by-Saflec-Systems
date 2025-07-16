@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application Form - Saflec Systems</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="SaflecSystemsLogo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="SaflecSystemsLogo.png" />
+  
+<style>
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    html {
+        scroll-padding-top: 64px;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
+        color: white;
+        min-height: 100vh;
+    }
+
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid #60a5fa;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-strong {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid #60a5fa;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .glass-input {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+        border: 1px solid #60a5fa;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+
+    .glass-input:focus {
+        border-color: #60a5fa !important;
+        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3) !important;
+        background: rgba(255, 255, 255, 0.18) !important;
+    }
+
+    .glass-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .glass-button {
+        background: #60a5fa;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid #60a5fa;
+        box-shadow: 0 8px 32px rgba(96, 165, 250, 0.3);
+    }
+
+    .card {
+        cursor: pointer;
+    }
+
+    .era-colors {
+        background: linear-gradient(45deg, #60a5fa, #3b82f6);
+    }
+
+    input, textarea, select {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #60a5fa !important;
+        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3) !important;
+    }
+
+    button {
+        background: #60a5fa;
+    }
+    
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .floating-element {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .section-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid #60a5fa;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-card:nth-child(odd) {
+        border-left: 4px solid #60a5fa;
+    }
+    
+    .section-card:nth-child(even) {
+        border-left: 4px solid #60a5fa;
+    }
+    
+    .progress-bar {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .progress-fill {
+        background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+        transition: width 0.5s ease;
+    }
+    
+    @media (max-width: 768px) {
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    }
+</style>
+
+<!-- Navigation Bar -->
+<nav class="glass-strong sticky top-0 z-[9999] backdrop-blur-md border-b border-white/20">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-3">
+    <a href="#" class="text-white text-lg font-semibold hover:text-cyan-400 transition">Application Portal</a>
+    <div class="hidden md:flex space-x-6">
+      <a href="index.html#home" class="text-white/80">Home</a>
+      <a href="#dealer" class="text-white/80" onclick="showTab('dealer')">Dealer Form</a>
+      <a href="#credit" class="text-white/80" onclick="showTab('credit')">Credit Form</a>
+    </div>
+    <button id="nav-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden glass-strong border-t border-white/10">
+    <div class="px-4 py-3 space-y-2">
+      <a href="index.html#home" class="block text-white/80 py-2">Home</a>
+      <a href="#dealer" class="block text-white/80 py-2" onclick="showTab('dealer'); toggleMobileMenu()">Dealer Form</a>
+      <a href="#credit" class="block text-white/80 py-2" onclick="showTab('credit'); toggleMobileMenu()">Credit Form</a>
+    </div>
+  </div>
+</nav>
+
+<div class="pt-8 pb-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+
+
+    <!-- Dealer Form Tab -->
+    <div id="dealer" class="tab-content active">
+        <div class="glass-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-black mb-2">Dealer Application Form</h2>
+                <p class="text-black/70">Complete the form below to apply for dealer status</p>
+            </div>
+            
+            <form class="space-y-6" id="dealer-form" action="https://formspree.io/f/xwpbwjep" method="POST">
+                <!-- Applicant's Details -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-black">Applicant's Details</h3>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Company Name</label>
+                            <input type="text" name="company_name" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter company name" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Registered Name</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter registered name">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">VAT Number</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter VAT number">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Registration Number</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter registration number">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Company Type</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter company type">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Website</label>
+                            <input type="url" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter website URL">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Person -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-black">Contact Persons</h3>
+                    </div>
+                    <div class="space-y-4" id="contacts-container">
+                        <div class="glass rounded-2xl p-4">
+                            <h4 class="font-bold text-black mb-3">Contact 1</h4>
+                            <div class="grid sm:grid-cols-4 gap-3">
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Full Name</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Full name">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Position/Title</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Position">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Phone Number</label>
+                                    <input type="tel" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Phone">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Email Address</label>
+                                    <input type="email" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" onclick="addContact()" class="mt-4 text-cyan-400 font-semibold flex items-center text-sm">
+                        <span class="mr-2">+</span>Add Another Contact
+                    </button>
+                </div>
+
+                <!-- Address Information -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-black">Address Information</h3>
+                    </div>
+                    
+                    <!-- Delivery Address -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-black mb-3">Delivery Address</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="sm:col-span-2 space-y-1">
+                                <label class="block text-xs font-semibold text-white">Street Address</label>
+                                <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Street address" id="delivery-street">
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:col-span-2">
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">City</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="City" id="delivery-city">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Province</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Province" id="delivery-province">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Postal Code</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Postal code" id="delivery-postal">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Country</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Country" id="delivery-country">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Postal Address -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-black mb-3">Postal Address</h4>
+                        <div class="mb-4">
+                            <label class="flex items-center glass-input rounded-lg p-3 cursor-pointer transition-all">
+                                <input type="checkbox" class="mr-3 w-4 h-4 text-cyan-400 rounded" onchange="copyDeliveryAddress(this)">
+                                <span class="text-white font-medium text-sm">Same as delivery address</span>
+                            </label>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="postal-address-fields">
+                            <div class="sm:col-span-2 space-y-1">
+                                <label class="block text-xs font-semibold text-white">Street Address</label>
+                                <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Street address" id="postal-street">
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:col-span-2">
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">City</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="City" id="postal-city">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Province</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Province" id="postal-province">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Postal Code</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Postal code" id="postal-postal">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Country</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Country" id="postal-country">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center pt-8">
+                    <button type="submit" class="glass-button text-white px-12 py-4 rounded-2xl font-bold text-lg">
+                        Submit Dealer Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Credit Form Tab -->
+    <div id="credit" class="tab-content">
+        <div class="glass-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-black mb-2">Credit Application Form</h2>
+                <p class="text-black/70">Complete the form below to apply for credit facilities</p>
+            </div>
+            
+            <form class="space-y-6" id="credit-form" action="https://formspree.io/f/xwpbwjep" method="POST">
+                <!-- Application Details -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-black">Application Details</h3>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Company Name</label>
+                            <input type="text" name="company_name" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter company name" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Registered Name</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter registered name">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">VAT Number</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter VAT number">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Registration Number</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter registration number">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Company Type</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter company type">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Website</label>
+                            <input type="url" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="Enter website URL">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trade References -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-black">Trade References</h3>
+                    </div>
+                    
+                    <div class="space-y-4" id="references-container">
+                        <div class="glass rounded-2xl p-4">
+                            <h4 class="font-bold text-black mb-3">Reference 1</h4>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Company Name</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Company name">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Contact Person</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Contact person">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Phone Number</label>
+                                    <input type="tel" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Phone number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" onclick="addReference()" class="mt-4 text-blue-600 font-semibold flex items-center text-sm">
+                        <span class="mr-2">+</span>Add Another Reference
+                    </button>
+                </div>
+
+                <!-- Directors/Members/Partners -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-black">Company Principals</h3>
+                    </div>
+                    <div class="space-y-4" id="principals-container">
+                        <div class="glass rounded-2xl p-4">
+                            <h4 class="font-bold text-black mb-3">Principal 1</h4>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Full Name</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Full name">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">Position</label>
+                                    <select class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm">
+                                        <option value="">Select position</option>
+                                        <option value="director">Director</option>
+                                        <option value="partner">Partner</option>
+                                        <option value="member">Member</option>
+                                        <option value="sole-owner">Sole Owner</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="block text-xs font-semibold text-white">ID Number</label>
+                                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="ID number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" onclick="addPrincipal()" class="mt-4 text-blue-600 font-semibold flex items-center">
+                        <span class="mr-2">+</span>Add Another Principal
+                    </button>
+                </div>
+
+                <!-- Credit Amount Required -->
+                <div class="section-card rounded-2xl p-6">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-black">Credit Requirements</h3>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Monthly Credit Limit (ZAR)</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none" placeholder="R 0.00">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-white">Payment Terms</label>
+                            <input type="text" class="glass-input w-full px-4 py-3 rounded-xl focus:outline-none bg-gray-100" value="30 Days" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center pt-8">
+                    <button type="submit" class="glass-button text-white px-12 py-4 rounded-2xl font-bold text-lg">
+                        Submit Credit Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let principalCount = 1;
+    let contactCount = 1;
+    let referenceCount = 1;
+
+    function showTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+
+        // Remove active class from all nav tabs
+        const navTabs = document.querySelectorAll('.nav-tab');
+        navTabs.forEach(tab => {
+            tab.classList.remove('glass');
+            tab.classList.add('text-blue-100', 'hover:text-white', 'hover:bg-white/20');
+            tab.classList.remove('text-white');
+        });
+
+        // Show selected tab content
+        document.getElementById(tabName).classList.add('active');
+
+        // Add active class to selected nav tab
+        const activeTab = document.getElementById(tabName + '-tab');
+        activeTab.classList.add('glass', 'text-white');
+        activeTab.classList.remove('text-blue-100', 'hover:text-white', 'hover:bg-white/20');
+
+        // Update progress bar
+        const progressBar = document.getElementById('progress-bar');
+        if (tabName === 'dealer') {
+            progressBar.style.width = '50%';
+        } else if (tabName === 'credit') {
+            progressBar.style.width = '100%';
+        }
+    }
+
+    function copyDeliveryAddress(checkbox) {
+        const postalSection = document.getElementById('postal-address-fields');
+        
+        if (checkbox.checked) {
+            // Hide postal address fields
+            postalSection.style.display = 'none';
+            
+            // Copy values from delivery to postal
+            document.getElementById('postal-street').value = document.getElementById('delivery-street').value;
+            document.getElementById('postal-city').value = document.getElementById('delivery-city').value;
+            document.getElementById('postal-province').value = document.getElementById('delivery-province').value;
+            document.getElementById('postal-postal').value = document.getElementById('delivery-postal').value;
+            document.getElementById('postal-country').value = document.getElementById('delivery-country').value;
+        } else {
+            // Show postal address fields
+            postalSection.style.display = 'grid';
+            
+            // Clear postal values
+            document.getElementById('postal-street').value = '';
+            document.getElementById('postal-city').value = '';
+            document.getElementById('postal-province').value = '';
+            document.getElementById('postal-postal').value = '';
+            document.getElementById('postal-country').value = '';
+        }
+    }
+
+    function addPrincipal() {
+        principalCount++;
+        const principalContainer = document.getElementById('principals-container');
+        
+        const newPrincipal = document.createElement('div');
+        newPrincipal.className = 'glass rounded-2xl p-6';
+        newPrincipal.innerHTML = `
+            <h4 class="font-bold text-gray-800 mb-4 flex items-center justify-between">
+                <span>Principal ${principalCount}</span>
+                <button type="button" onclick="removePrincipal(this)" class="text-red-500 hover:text-red-700 text-sm font-medium">
+                    ❌ Remove
+                </button>
+            </h4>
+            <div class="grid sm:grid-cols-3 gap-4">
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-white">Full Name</label>
+                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none" placeholder="Full name" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-white">Position</label>
+                    <select class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none" required>
+                        <option value="">Select position</option>
+                        <option value="director">Director</option>
+                        <option value="partner">Partner</option>
+                        <option value="member">Member</option>
+                        <option value="sole-owner">Sole Owner</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-white">ID Number</label>
+                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none" placeholder="ID number" required>
+                </div>
+            </div>
+        `;
+        
+        principalContainer.appendChild(newPrincipal);
+    }
+
+    function removePrincipal(button) {
+        button.closest('.glass').remove();
+    }
+
+    function addContact() {
+        contactCount++;
+        const contactContainer = document.getElementById('contacts-container');
+        
+        const newContact = document.createElement('div');
+        newContact.className = 'glass rounded-2xl p-4';
+        newContact.innerHTML = `
+            <h4 class="font-bold text-gray-800 mb-3 flex items-center justify-between">
+                <span>Contact ${contactCount}</span>
+                <button type="button" onclick="removeContact(this)" class="text-red-500 hover:text-red-700 text-sm font-medium">
+                    ❌ Remove
+                </button>
+            </h4>
+            <div class="grid sm:grid-cols-4 gap-3">
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Full Name</label>
+                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Full name">
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Position/Title</label>
+                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Position">
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Phone Number</label>
+                    <input type="tel" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Phone">
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Email Address</label>
+                    <input type="email" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Email">
+                </div>
+            </div>
+        `;
+        
+        contactContainer.appendChild(newContact);
+    }
+
+    function removeContact(button) {
+        button.closest('.glass').remove();
+    }
+
+    function addReference() {
+        referenceCount++;
+        const referenceContainer = document.getElementById('references-container');
+        
+        const newReference = document.createElement('div');
+        newReference.className = 'glass rounded-2xl p-4';
+        newReference.innerHTML = `
+            <h4 class="font-bold text-gray-800 mb-3 flex items-center justify-between">
+                <span>Reference ${referenceCount}</span>
+                <button type="button" onclick="removeReference(this)" class="text-red-500 hover:text-red-700 text-sm font-medium">
+                    ❌ Remove
+                </button>
+            </h4>
+            <div class="grid sm:grid-cols-3 gap-3">
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Company Name</label>
+                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Company name">
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Contact Person</label>
+                    <input type="text" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Contact person">
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-xs font-semibold text-white">Phone Number</label>
+                    <input type="tel" class="glass-input w-full px-3 py-2 rounded-lg focus:outline-none text-sm" placeholder="Phone number">
+                </div>
+            </div>
+        `;
+        
+        referenceContainer.appendChild(newReference);
+    }
+
+    function removeReference(button) {
+        button.closest('.glass').remove();
+    }
+
+    // Mobile menu toggle functionality
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    }
+
+    // Form submission handlers - Let forms submit naturally to Formspree
+    document.getElementById('dealer-form').addEventListener('submit', function(e) {
+        // Allow natural form submission to Formspree
+        console.log('Dealer form submitting to Formspree...');
+    });
+
+    document.getElementById('credit-form').addEventListener('submit', function(e) {
+        // Allow natural form submission to Formspree
+        console.log('Credit form submitting to Formspree...');
+    });
+
+    // Initialize form functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        document.getElementById('nav-toggle').addEventListener('click', toggleMobileMenu);
+        
+        // Form is ready for use
+        console.log('Application forms loaded successfully');
+    });
+</script>
+
+</body>
+</html>
