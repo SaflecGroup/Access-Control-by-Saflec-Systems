@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html class="scroll-p-20 md:scroll-p-20 lg:scroll-p-20">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Access Control by Saflec Systems</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="SaflecTabIcon.png" type="image/x-icon" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="glass-strong">
+  <div class="container mx-auto flex justify-between items-center px-4 py-4">
+    <a href="#top" aria-label="Saflec Systems Home">
+      <img src="SaflecHeaderLogo.png" alt="Saflec Systems Logo" class="h-12 sm:h-14" />
+    </a>
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-6 text-sm lg:text-base">
+      <a href="#top" class="text-white font-semibold hover:text-black">Home</a>
+      <a href="#about" class="text-white font-semibold hover:text-black">About</a>
+      <a href="#partners" class="text-white font-semibold hover:text-black">Partners</a>
+<!-- Products Dropdown -->
+<div class="relative">
+  <div class="flex items-center gap-1">
+    <a href="#products" class="text-white font-semibold hover:text-black">Products</a>
+    <svg  id="productsArrow" onclick="toggleDropdown('desktopProductsDropdown', 'productsArrow')" class="w-4 h-4 transition-transform duration-300 cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"  aria-hidden="true" aria-label="Toggle Products Dropdown" role="button" >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+  <div  id="desktopProductsDropdown"  class="absolute left-0 hidden mt-2 glass rounded-xl w-44 z-50 text-sm shadow-lg"  role="menu"  aria-label="Products submenu" >
+    <a href="#accesscontrol" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Access Control</a>
+    <a href="#cardprinter" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">PVC Card Printers</a>
+    <a href="#software" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Software Solutions</a>
+	<a href="#saflec" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Saflec Hardware</a>
+  </div>
+</div>
+<!-- Resources Dropdown -->
+<div class="relative">
+  <div class="flex items-center gap-1">
+    <a href="#resources" class="text-white font-semibold hover:text-black">Resources</a>
+    <svg  id="resourcesArrow"  onclick="toggleDropdown('desktopResourcesDropdown', 'resourcesArrow')" class="w-4 h-4 transition-transform duration-300 cursor-pointer" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" aria-label="Toggle Resources Dropdown" role="button" >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+  <div  id="desktopResourcesDropdown" class="absolute left-0 hidden mt-2 glass rounded-xl w-44 z-50 text-sm shadow-lg" role="menu" aria-label="Resources submenu">
+    <a href="#brochure" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">SACS Brochure</a>
+    <a href="#applicationform" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Application Form</a>
+    <a href="#trainingform" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Training Form</a>
+  </div>
+</div>
+      <a href="#news" class="text-white font-semibold hover:text-black">News</a>
+      <a href="#team" class="text-white font-semibold hover:text-black">Team</a>
+      <a href="#contact" class="text-white font-semibold hover:text-black">Contact Us</a>
+    </div>
+
+    <!-- Hamburger Button for Mobile -->
+    <button id="nav-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 glass rounded-xl" aria-label="Mobile navigation menu">
+    <a href="#top" class="block py-3 text-black font-semibold hover:text-white">Home</a>
+    <a href="#about" class="block py-3 text-black font-semibold hover:text-white">About</a>
+    <a href="#partners" class="block py-3 text-black font-semibold hover:text-white">Partners</a>
+<!-- Products Mobile Dropdown -->
+<div>
+  <div class="w-full text-left py-3 font-semibold text-black flex justify-between items-center hover:text-white">
+    <a href="#products" class="flex-1" role="link" aria-label="Products">Products</a>
+    <button onclick="toggleMobileDropdown('productsDropdown')" class="ml-2" aria-expanded="false" aria-controls="productsDropdown" aria-label="Toggle Products submenu">
+      <svg class="w-4 h-4 transition-transform duration-300" id="productsDropdownIcon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+  </div>
+  <div id="productsDropdown" class="hidden pl-4 space-y-1" role="menu" aria-label="Products submenu">
+    <a href="#accesscontrol" class="block py-2 text-black rounded hover:text-white" role="menuitem">Access Control</a>
+    <a href="#cardprinter" class="block py-2 text-black rounded hover:text-white" role="menuitem">PVC Card Printers</a>
+    <a href="#software" class="block py-2 text-black rounded hover:text-white" role="menuitem">Software Solutions</a>
+    <a href="#saflec" class="block py-2 text-black rounded hover:text-white" role="menuitem">Saflec Hardware</a>
+  </div>
+</div>
+<!-- Resources Mobile Dropdown -->
+<div>
+  <div class="w-full text-left py-3 font-semibold text-black flex justify-between items-center hover:text-white">
+    <a href="#resources" class="flex-1" role="link" aria-label="Resources">Resources</a>
+    <button onclick="toggleMobileDropdown('resourcesDropdown')" class="ml-2" aria-expanded="false" aria-controls="resourcesDropdown" aria-label="Toggle Resources submenu">
+      <svg class="w-4 h-4 transition-transform duration-300" id="resourcesDropdownIcon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+  </div>
+  <div id="resourcesDropdown" class="hidden pl-4 space-y-1" role="menu" aria-label="Resources submenu">
+    <a href="#brochure" class="block py-2 text-black rounded hover:text-white" role="menuitem">SACS Brochure</a>
+    <a href="#applicationform" class="block py-2 text-black rounded hover:text-white" role="menuitem">Application Form</a>
+    <a href="#trainingform" class="block py-2 text-black rounded hover:text-white" role="menuitem">Training Form</a>
+  </div>
+</div>
+    <a href="#news" class="block py-3 text-black font-semibold hover:text-white">News</a>
+    <a href="#team" class="block py-3 text-black font-semibold hover:text-white">Team</a>
+    <a href="#contact" class="block py-3 text-black font-semibold hover:text-white">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero" class="relative w-full h-screen overflow-x-hidden">
+  <div id="heroSlides" class="relative w-full h-full">
+    <!-- Slide 1: Video with Tablet Version -->
+    <div class="absolute inset-0 w-full h-full hero-slide opacity-100 z-10 transition-opacity duration-1000 ease-in-out" id="slide0" aria-hidden="false">
+      <!-- Mobile: < 768px -->
+      <video autoplay muted loop playsinline class="block sm:hidden object-cover w-full h-full" tabindex="-1">
+        <source src="SaflecIntroMobile.mp4" type="video/mp4" />
+      </video>
+      <!-- Tablet: 768px to <1024px -->
+      <video autoplay muted loop playsinline class="hidden md:block lg:hidden object-cover w-full h-full" tabindex="-1">
+        <source src="SaflecIntroTablet.mp4" type="video/mp4" />
+      </video>
+      <!-- Desktop: >=1024px -->
+      <video autoplay muted loop playsinline class="hidden lg:block object-cover w-full h-full" tabindex="-1">
+        <source src="SaflecIntroDesktop.mp4" type="video/mp4" />
+      </video>
+    </div>
+<!-- Slide 2: Product Range -->
+<div class="absolute inset-0 w-full h-full hero-slide opacity-0 z-0 transition-opacity duration-1000 ease-in-out" id="slide1" aria-hidden="true">
+  <!-- Mobile -->
+  <video autoplay muted loop playsinline class="block sm:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesMobileNew.mp4" type="video/mp4" />
+  </video>
+  <!-- Tablet -->
+  <video autoplay muted loop playsinline class="hidden md:block lg:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesTabletNew.mp4" type="video/mp4" />
+  </video>
+  <!-- Desktop -->
+  <video autoplay muted loop playsinline class="hidden lg:block object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesDesktopNew.mp4" type="video/mp4" />
+  </video>
+  <!-- Overlay -->
+  <div class="absolute inset-0 flex items-center justify-center z-10 px-6">
+    <div class="glass p-8 sm:p-10 rounded-3xl max-w-3xl w-full text-center space-y-6">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold drop-shadow-lg">Explore Our Product Range</h1>
+      <p class="text-white text-base sm:text-xl font-medium">
+        Discover our wide range of advanced access control solutions. Create your own product quote and email it to us - we’ll respond with an official quote and assistance. Browse all available products to find exactly what you need.
+      </p>
+      <a href="#products" class="glass-button px-8 py-3 rounded-full">View Products</a>
+    </div>
+  </div>
+</div>
+<!-- Slide 3: Training -->
+<div class="absolute inset-0 w-full h-full hero-slide opacity-0 z-0 transition-opacity duration-1000 ease-in-out" id="slide2" aria-hidden="true">
+  <video autoplay muted loop playsinline class="block sm:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesMobileNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden md:block lg:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesTabletNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden lg:block object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesDesktopNew.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center z-10 px-6">
+    <div class="glass p-8 sm:p-10 rounded-3xl max-w-3xl w-full text-center space-y-6">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold">Apply for Training</h1>
+      <p class="text-white text-base sm:text-xl font-medium">
+        Become a certified Saflec Systems installer through our hands-on training. Learn everything about our access control solutions from experts and boost your installation skills to meet industry standards.
+      </p>
+      <a href="#reference" class="glass-button px-8 py-3 rounded-full">Apply Now</a>
+    </div>
+  </div>
+</div>
+<!-- Slide 4: SACS Fusion -->
+<div class="absolute inset-0 w-full h-full hero-slide opacity-0 z-0 transition-opacity duration-1000 ease-in-out" id="slide3" aria-hidden="true">
+  <video autoplay muted loop playsinline class="block sm:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesMobileNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden md:block lg:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesTabletNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden lg:block object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesDesktopNew.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center z-10 px-6">
+    <div class="glass p-8 sm:p-10 rounded-3xl max-w-3xl w-full text-center space-y-6">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold">SACS Fusion</h1>
+      <p class="text-white text-base sm:text-xl font-medium">
+        SACS Fusion is the upcoming web-based evolution of SACS Connect, offering a modern, browser-accessible platform for managing access control with greater flexibility, scalability, and ease of use.
+      </p>
+      <a href="#" class="glass-button px-8 py-3 rounded-full opacity-50 cursor-not-allowed select-none" aria-disabled="true">Coming Soon</a>
+    </div>
+  </div>
+</div>
+<!-- Slide 5: Mobile App -->
+<div class="absolute inset-0 w-full h-full hero-slide opacity-0 z-0 transition-opacity duration-1000 ease-in-out" id="slide4" aria-hidden="true">
+  <video autoplay muted loop playsinline class="block sm:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesMobileNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden md:block lg:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesTabletNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden lg:block object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesDesktopNew.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center z-10 px-6">
+    <div class="glass p-8 sm:p-10 rounded-3xl max-w-3xl w-full text-center space-y-6">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold">SACS Connect Mobile</h1>
+      <p class="text-white text-base sm:text-xl font-medium">
+        SACS Connect Mobile is our next-generation mobile app version of SACS Connect, bringing remote access control management to your fingertips for enhanced convenience and control.
+      </p>
+      <a href="#" class="glass-button px-8 py-3 rounded-full opacity-50 cursor-not-allowed select-none" aria-disabled="true">Coming Soon</a>
+    </div>
+  </div>
+</div>
+<!-- Slide 6: Saflec Group -->
+<div class="absolute inset-0 w-full h-full hero-slide opacity-0 z-0 transition-opacity duration-1000 ease-in-out" id="slide5" aria-hidden="true">
+  <video autoplay muted loop playsinline class="block sm:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesMobileNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden md:block lg:hidden object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesTabletNew.mp4" type="video/mp4" />
+  </video>
+  <video autoplay muted loop playsinline class="hidden lg:block object-cover w-full h-full" tabindex="-1">
+    <source src="SaflecSystemsSlidesDesktopNew.mp4" type="video/mp4" />
+  </video>
+  <div class="absolute inset-0 flex items-center justify-center z-10 px-6">
+    <div class="glass p-8 sm:p-10 rounded-3xl max-w-3xl w-full text-center space-y-6">
+      <h1 class="text-white text-3xl sm:text-5xl font-extrabold">Saflec</h1>
+      <p class="text-white text-base sm:text-xl font-medium">
+        Saflec Systems’ sister company, Saflec, is a leading electronics and R&D company, specializing in RFID and embedded design solutions, contributing to our innovative access control products
+      </p>
+      <a href="https://www.saflec.com" class="glass-button px-8 py-3 rounded-full" target="_blank" rel="noopener noreferrer">Visit Saflec</a>
+    </div>
+  </div>
+</div>
+  <!-- Hero Navigation: thumbnails on desktop -->
+  <div id="heroNavigation" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex gap-4 select-none">
+    <button aria-label="Slide 1" class="thumb scale-125" data-slide="0" aria-current="true" tabindex="0" aria-controls="slide0">
+      <img src="SaflecButtons.png" alt="Intro Video Thumbnail" class="w-full h-full object-cover rounded-l" />
+    </button>
+    <button aria-label="Slide 2" class="thumb" data-slide="1" aria-current="false" tabindex="-1" aria-controls="slide1">
+      <img src="SaflecButtons.png" alt="Product Range Thumbnail" class="w-full h-full object-cover rounded-l" />
+    </button>
+    <button aria-label="Slide 3" class="thumb" data-slide="2" aria-current="false" tabindex="-1" aria-controls="slide2">
+      <img src="SaflecButtons.png" alt="Training Thumbnail" class="w-full h-full object-cover rounded-l" />
+    </button>
+    <button aria-label="Slide 4" class="thumb" data-slide="3" aria-current="false" tabindex="-1" aria-controls="slide3">
+      <img src="SaflecButtons.png" alt="SACS Fusion Thumbnail" class="w-full h-full object-cover rounded-l" />
+    </button>
+    <button aria-label="Slide 5" class="thumb" data-slide="4" aria-current="false" tabindex="-1" aria-controls="slide4">
+      <img src="SaflecButtons.png" alt="Mobile App Thumbnail" class="w-full h-full object-cover rounded-l" />
+    </button>
+    <button aria-label="Slide 6" class="thumb" data-slide="5" aria-current="false" tabindex="-1" aria-controls="slide5">
+      <img src="SaflecButtons.png" alt="Saflec Group Thumbnail" class="w-full h-full object-cover rounded-l" />
+    </button>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <!-- Glassy Wave Top -->
+  <svg class="absolute top-0 left-0 w-full h-64 opacity-25 z-0 pointer-events-none" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" >
+    <path fill="#ffffff" fill-opacity="0.3" d="M0,32L48,53.3C96,75,192,117,288,144C384,171,480,181,576,160C672,139,768,85,864,64C960,43,1056,53,1152,80C1248,107,1344,149,1392,170.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" />
+  </svg>
+  <!-- Dotted Overlay - Subtle Tech Grid -->
+  <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dotPattern)" />
+    </svg>
+  </div>
+  <div class="max-w-7xl mx-auto space-y-8">
+      <!-- Title -->
+    <div class="text-center mb-14 px-4">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black" data-aos="fade-up">
+      About Us
+    </h2>
+      <p class="text-base sm:text-lg text-white max-w-2xl mx-auto">
+        Get to know who we are, where we come from, and what drives our innovation in access control.
+      </p>
+    </div>
+    <!-- Top Row: Left Stack, Center Story, Right Stack -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Left Side Cards Stack -->
+      <div class="flex flex-col gap-4">
+        <!-- Feature Card 1 -->
+        <section data-index="1" data-aos="fade-right" class="h-full">
+          <div class="glass-strong clickable-card h-full max-w-sm sm:max-w-md mx-auto flex flex-col justify-between p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl md:rounded-3xl transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]" onclick="navigateToTeam()">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-users text-black text-lg md:text-xl"></i>
+                <h4 class="text-lg md:text-xl font-semibold text-black">Experienced Team</h4>
+              </div>
+              <p class="text-sm md:text-base font-medium">
+                Our team brings decades of experience in the access control industry. We combine technical knowledge, innovative thinking, and a customer-first mindset to deliver high-quality solutions. Our engineers, developers, and support staff work together to provide reliable and secure systems.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- Feature Card 2 -->
+        <section data-index="2" data-aos="fade-right" data-aos-delay="100" class="h-full">
+          <div class="glass-strong clickable-card h-full max-w-sm sm:max-w-md mx-auto flex flex-col justify-between p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl md:rounded-3xl transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-industry text-black text-lg md:text-xl"></i>
+                <h4 class="text-lg md:text-xl font-semibold text-black">Locally Manufactured</h4>
+              </div>
+              <p class="text-sm md:text-base font-medium">
+                Proudly South African, Saflec Systems designs and manufactures all access control products locally. This ensures high-quality standards, rapid support, and the flexibility to customize solutions that meet the unique needs of African markets and beyond
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- Our Story Block (Center) -->
+      <section data-index="0" data-aos="zoom-in" class="h-full">
+        <div class="glass-strong clickable-card mx-auto p-6 md:p-8 lg:p-10 rounded-3xl h-full flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]">
+          <div>
+            <h3 class="text-3xl font-semibold text-center text-black mb-4">Our Story</h3>
+            <div class="space-y-3 text-sm md:text-base font-medium leading-relaxed">
+              <p>
+                Saflec Systems is a leader in access-controlled security, offering SACS an offline system where door controllers make local access decisions. This setup ensures reliability, faster response times, and continued operation even during PC or network failures, making it ideal for wide-area company networks.
+              </p>
+              <p>
+                SACS also allows optional online control for advanced tasks or future upgrades. Designed in South Africa, our products reflect decades of expertise. Saflec Systems is part of the Saflec Group, alongside Saflec, a specialist in metal detection technology.
+              </p>
+            </div>
+          </div>
+          <a href="https://www.saflec.com" target="_blank" rel="noopener noreferrer" class="glass-button mt-6 block font-medium px-6 py-2 rounded-full text-black text-center max-w-max mx-auto transition hover:scale-105 hover:shadow-[0_0_20px_rgba(96,165,250,0.6)]">
+            Visit Saflec
+          </a>
+        </div>
+      </section>
+      <!-- Right Side Cards Stack -->
+      <div class="flex flex-col gap-4">
+        <!-- Feature Card 3 -->
+        <section data-index="3" data-aos="fade-left" data-aos-delay="100" class="h-full">
+          <div class="glass-strong clickable-card h-full max-w-sm sm:max-w-md mx-auto flex flex-col justify-between p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl md:rounded-3xl transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-plug text-black text-lg md:text-xl"></i>
+                <h4 class="text-lg md:text-xl font-semibold text-black">3rd Party Integration</h4>
+              </div>
+              <p class="text-sm md:text-base font-medium">
+                Our systems integrate seamlessly with leading third-party solutions, including Hikvision, Idemia, STid, Suprema, and Virdi. We ensure reliable and future-ready interoperability.
+              </p>
+            </div>
+          </div>
+        </section>
+<!-- Feature Card 4 - Social Media -->
+<section data-index="4" data-aos="fade-left" class="h-full">
+  <div class="glass-strong h-full max-w-sm sm:max-w-md mx-auto flex flex-col justify-between p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl md:rounded-3xl transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <i class="fas fa-share-alt text-black text-lg md:text-xl"></i>
+        <h4 class="text-lg md:text-xl font-semibold text-black">Follow Us</h4>
+      </div>
+      <p class="text-sm md:text-base font-medium">
+        Stay connected with us on Facebook, Instagram, LinkedIn, Twitter, TikTok, and Threads for the latest updates and community highlights. Join the Saflec conversation!
+      </p>
+      <div class="flex items-center justify-start gap-4 mt-4 text-black">
+        <a href="https://www.facebook.com/SaflecSys/" target="_blank" aria-label="Facebook" class="hover:text-blue-600 transition">
+          <i class="fab fa-facebook fa-lg"></i>
+        </a>
+        <a href="https://www.instagram.com/saflecgroup/" target="_blank" aria-label="Instagram" class="hover:text-pink-500 transition">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/saflec-systems-pty-ltd./posts/?feedView=all" target="_blank" aria-label="LinkedIn" class="hover:text-blue-400 transition">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+        <a href="https://x.com/SaflecSystems" target="_blank" aria-label="Twitter" class="hover:text-sky-400 transition">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+        <a href="https://www.tiktok.com/@saflecgroup" target="_blank" aria-label="TikTok" class="hover:text-black transition">
+          <i class="fab fa-tiktok fa-lg"></i>
+        </a>
+        <a href="https://www.threads.com/@saflecgroup" target="_blank" aria-label="Threads" class="hover:text-black transition">
+          <i class="fas fa-at fa-lg"></i> <!-- Placeholder for Threads -->
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+      </div>
+    </div>
+    <!-- Bottom Row: 2 Cards Full Width -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Feature Card 5 -->
+      <section data-index="5" data-aos="fade-up" class="h-full">
+        <div class="glass-strong clickable-card h-full flex flex-col justify-between w-full p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl md:rounded-3xl transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]" onclick="openSupportModal()">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fas fa-headset text-black text-xl"></i>
+              <h4 class="text-xl font-semibold text-black">Technical Support</h4>
+            </div>
+            <p class="text-sm md:text-base font-medium">
+              Our dedicated technical support team is always ready to assist. Whether it's installation queries, troubleshooting, or guidance, simply reach out and our experts will help resolve your issues promptly and professionally.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Feature Card 6 -->
+      <section data-index="6" data-aos="fade-up" data-aos-delay="100" class="h-full">
+        <div class="glass-strong clickable-card h-full flex flex-col justify-between w-full p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl md:rounded-3xl transition-transform transform hover:scale-105 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)]" onclick="navigateToResources()">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fas fa-graduation-cap text-black text-xl"></i>
+              <h4 class="text-xl font-semibold text-black">Product Training</h4>
+            </div>
+            <p class="text-sm md:text-base font-medium">
+              Gain hands-on experience with our products through in-depth training sessions. Our program equips you with the knowledge and skills to confidently install and support Saflec Systems solutions as a certified installer.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- Support Modal -->
+<div id="supportModal" class="fixed inset-0 modal-overlay hidden items-center justify-center z-50" onclick="closeSupportModal()">
+  <div class="modal-content glass-strong rounded-2xl sm:rounded-3xl p-6 max-w-2xl mx-4 relative" onclick="event.stopPropagation()">
+    <button onclick="closeSupportModal()" class="absolute top-4 right-4 text-white hover:text-blue-300 text-2xl transition-colors duration-200 z-10">
+      <i class="fas fa-times"></i>
+    </button>
+    <h3 class="text-3xl font-bold text-white mb-6 text-center">Our Support Team</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Support 1 -->
+      <div class="glass-strong p-6 rounded-2xl text-center">
+        <h4 class="text-xl font-semibold text-white mb-2">Lydon De Jager</h4>
+        <p class="text-blue-400 mb-3">Technical Support Manager</p>
+        <div class="space-y-2 text-sm text-white">
+          <p>+27 71 670 3486</p>
+        </div>
+      </div>
+      <!-- Support 2 -->
+      <div class="glass-strong p-6 rounded-2xl text-center">
+        <h4 class="text-xl font-semibold text-white mb-2">Sheldon Da Silva</h4>
+        <p class="text-blue-400 mb-3">Technical Support</p>
+        <div class="space-y-2 text-sm text-white">
+          <p>+27 66 475 0079</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <div class="glass-button inline-block px-6 py-2 rounded-full text-white text-base">
+        Office Number: +27 11 477 4760<br>
+        <a href="mailto:support@saflecsystems.co.za">support@saflecsystems.co.za</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Partners Section -->
+<section id="partners" class="bg-gradient-to-tl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
+    <!-- Dotted Overlay - Subtle Tech Grid -->
+  <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dotPattern)" />
+    </svg>
+  </div>
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black" data-aos="fade-up">
+      Our Partners
+    </h2>
+    <p class="mb-12 text-base sm:text-lg font-medium max-w-3xl mx-auto text-white" data-aos="fade-up" data-aos-delay="50">
+      We work alongside industry-leading partners who help us deliver integrated, world-class security solutions.
+    </p>
+    <div class="glass-strong px-6 sm:px-10 py-10 sm:py-16 rounded-3xl shadow-lg relative overflow-hidden text-white" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-black" data-aos="fade-up" data-aos-delay="150">
+        Our Trusted Biometric Partners
+      </h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-6 mb-10 sm:mb-12 text-center">
+        <button onclick="openModal('modal-partner1')" class="glass px-4 py-4 sm:py-6 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 hover:bg-white/50 transition-all duration-300 focus:outline-none text-black font-semibold text-sm sm:text-lg">
+          Hikvision
+        </button>
+        <button onclick="openModal('modal-partner2')" class="glass px-4 py-4 sm:py-6 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 hover:bg-white/50 transition-all duration-300 focus:outline-none text-black font-semibold text-sm sm:text-lg">
+          Idemia
+        </button>
+        <button onclick="openModal('modal-partner3')" class="glass px-4 py-4 sm:py-6 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 hover:bg-white/50 transition-all duration-300 focus:outline-none text-black font-semibold text-sm sm:text-lg">
+          STid
+        </button>
+        <button onclick="openModal('modal-partner4')" class="glass px-4 py-4 sm:py-6 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 hover:bg-white/50 transition-all duration-300 focus:outline-none text-black font-semibold text-sm sm:text-lg">
+          Suprema
+        </button>
+        <button onclick="openModal('modal-partner5')" class="glass px-4 py-4 sm:py-6 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 hover:bg-white/50 transition-all duration-300 focus:outline-none text-black font-semibold text-sm sm:text-lg">
+          Virdi
+        </button>
+      </div>
+      <a href="partners.html" class="glass-button inline-block font-semibold text-sm sm:text-base px-6 sm:px-10 py-3 sm:py-4 rounded-3xl shadow-md transition transform hover:scale-105 hover:shadow-xl !text-black">
+        Meet All The Partners
+      </a>
+    </div>
+  </div>
+<!-- Modal 1 (Hikvision) -->
+<div id="modal-partner1" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-60 z-50 px-4" onclick="outsideClick(event, 'modal-partner1')">
+  <div class="glass-strong w-full max-w-sm sm:max-w-lg p-6 sm:p-8 relative text-center rounded-3xl bg-white/10 border-2 border-red-600 overflow-hidden" onclick="event.stopPropagation()">
+    <button class="absolute top-4 right-4 text-white text-3xl hover:text-red-600" onclick="closeModal('modal-partner1')">&times;</button>
+    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-red-600">Hikvision</h3>
+    <p class="mb-4 text-white/80 text-sm sm:text-base">
+      Hikvision is a global leader in video surveillance and AI-driven security technologies. Known for their high-quality cameras and innovative systems, they offer integrated solutions that enhance access control and building security.
+    </p>
+    <a href="https://www.hikvision.com/en/" target="_blank"
+       class="inline-block mt-2 px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition">
+      Visit Website
+    </a>
+  </div>
+</div>
+<!-- Modal 2 (Idemia) -->
+<div id="modal-partner2" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-60 z-50 px-4" onclick="outsideClick(event, 'modal-partner2')">
+  <div class="glass-strong w-full max-w-sm sm:max-w-lg p-6 sm:p-8 relative text-center rounded-3xl bg-white/10 border-2 border-purple-600 overflow-hidden" onclick="event.stopPropagation()">
+    <button class="absolute top-4 right-4 text-white text-3xl hover:text-purple-600" onclick="closeModal('modal-partner2')">&times;</button>
+    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-purple-600">Idemia</h3>
+    <p class="mb-6 text-white/80 text-sm sm:text-base">
+      Idemia specializes in biometric and identity solutions, providing advanced facial and fingerprint recognition systems. Their secure authentication technologies support modern access control in critical sectors worldwide.
+    </p>
+    <a href="https://www.idemia.com/" target="_blank"
+       class="inline-block mt-2 px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition">
+      Visit Website
+    </a>
+  </div>
+</div>
+<!-- Modal 3 (STid) -->
+<div id="modal-partner3" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-60 z-50 px-4" onclick="outsideClick(event, 'modal-partner3')">
+  <div class="glass-strong w-full max-w-sm sm:max-w-lg p-6 sm:p-8 relative text-center rounded-3xl bg-white/10 border-2 border-blue-600 overflow-hidden" onclick="event.stopPropagation()">
+    <button class="absolute top-4 right-4 text-white text-3xl hover:text-blue-600" onclick="closeModal('modal-partner3')">&times;</button>
+    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-blue-600">STid</h3>
+    <p class="mb-6 text-white/80 text-sm sm:text-base">
+      STid is a French company that develops secure RFID and mobile access control readers. Their solutions are known for robust encryption, user convenience, and compliance with international security standards.
+    </p>
+    <a href="https://stid-security.com/fr/" target="_blank"
+       class="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+      Visit Website
+    </a>
+  </div>
+</div>
+<!-- Modal 4 (Suprema) -->
+<div id="modal-partner4" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-60 z-50 px-4" onclick="outsideClick(event, 'modal-partner4')">
+  <div class="glass-strong w-full max-w-sm sm:max-w-lg p-6 sm:p-8 relative text-center rounded-3xl bg-white/10 border-2 border-[#800000] overflow-hidden" onclick="event.stopPropagation()">
+    <button class="absolute top-4 right-4 text-white text-3xl hover:text-[#800000]" onclick="closeModal('modal-partner4')">&times;</button>
+    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-[#800000]">Suprema</h3>
+    <p class="mb-6 text-white/80 text-sm sm:text-base">
+      Suprema is a global provider of biometric and access control technologies. Their portfolio includes fingerprint scanners, facial recognition terminals, and integrated security platforms trusted by enterprises worldwide.
+    </p>
+    <a href="https://www.supremainc.com/en/" target="_blank"
+       class="inline-block mt-2 px-4 py-2 bg-[#800000] text-white rounded-xl hover:bg-red-800 transition">
+      Visit Website
+    </a>
+  </div>
+</div>
+<!-- Modal 5 (Virdi) -->
+<div id="modal-partner5" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-60 z-50 px-4" onclick="outsideClick(event, 'modal-partner5')">
+  <div class="glass-strong w-full max-w-sm sm:max-w-lg p-6 sm:p-8 relative text-center rounded-3xl bg-white/10 border-2 border-gray-400 overflow-hidden" onclick="event.stopPropagation()">
+    <button class="absolute top-4 right-4 text-white text-3xl hover:text-gray-400" onclick="closeModal('modal-partner5')">&times;</button>
+    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-gray-400">Virdi</h3>
+    <p class="mb-6 text-white/80 text-sm sm:text-base">
+      Virdi, a brand by Union Community, is a South Korean company known for cutting-edge fingerprint and facial recognition solutions. They offer reliable, high-performance biometric devices for secure access control.
+    </p>
+    <a href="https://www.virditech.co.za/" target="_blank"
+       class="inline-block mt-2 px-4 py-2 bg-gray-400 text-white rounded-xl hover:bg-gray-500 transition">
+      Visit Website
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- Product Section -->
+<section id="products" class="bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
+    <!-- Dotted Overlay -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
+      </svg>
+    </div>
+    <!-- Section Heading -->
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black" data-aos="fade-up">
+      Our Products
+    </h2>
+    <p class="mb-12 text-base sm:text-lg font-medium max-w-3xl mx-auto text-white" data-aos="fade-up" data-aos-delay="50">
+      Discover our full range of access control solutions - from locally developed systems to leading biometric technology and card printing hardware. Built for performance, flexibility, and seamless integration.
+    </p>
+    <!-- Product Cards -->
+    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center">
+      <!-- Access Control Product -->
+      <article id="accesscontrol" class="group relative glass-strong p-8 rounded-3xl transform transition-all duration-500 hover:scale-105 shadow-xl lg:col-span-2" data-aos="zoom-in-up" data-aos-delay="0">
+        <h3 class="text-2xl font-bold text-black mb-4">Access Control Product</h3>
+        <p class="text-sm text-white font-medium mb-6 leading-relaxed">
+          Saflec Systems offers a unified platform that merges our advanced in-house access control solutions with seamless integration into leading biometric technologies, including Suprema, Idemia, and Hikvision. This powerful combination ensures enhanced security, system flexibility, and reliable performance - delivering a scalable solution designed to meet the evolving needs of modern security environments with precision and ease.
+        </p>
+        <a href="accesscontrol.html"
+           class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+          Explore the Products
+        </a>
+      </article>
+      <!-- PVC Card Printers -->
+      <article id="cardprinter" class="group relative glass-strong p-8 rounded-3xl transform transition-all duration-500 hover:rotate-[1deg] hover:scale-105 shadow-xl" data-aos="zoom-in-up" data-aos-delay="100">
+        <h3 class="text-2xl font-bold text-black mb-4">PVC Card Printers</h3>
+        <p class="text-sm text-white font-medium mb-6 leading-relaxed">
+          High-resolution PVC card printers that integrate seamlessly with our access systems. Effortlessly print badges, passes, and ID cards with full support for ribbons and accessories.
+        </p>
+        <a href="printers.html"
+           class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+          Browse Printers
+        </a>
+      </article>
+      <!-- Software Solutions -->
+      <article id="software" class="group relative glass-strong p-8 rounded-3xl transform transition-all duration-500 hover:rotate-[1deg] hover:scale-105 shadow-xl" data-aos="zoom-in-up" data-aos-delay="200">
+        <h3 class="text-2xl font-bold text-black mb-4">Software Solutions</h3>
+        <p class="text-sm text-white font-medium mb-6 leading-relaxed">
+          Saflec Systems provides advanced access control software, including SACS Connect, SACS PA, Web Client, and Saflec Time, for secure, flexible access and attendance management across various environments.
+        </p>
+        <a href="software.html"
+           class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+          View Software
+        </a>
+      </article>
+      <!-- Saflec Product -->
+      <article id="saflec" class="group relative glass-strong p-8 rounded-3xl transform transition-all duration-500 hover:scale-105 shadow-xl lg:col-span-2" data-aos="zoom-in-up" data-aos-delay="300">
+        <h3 class="text-2xl font-bold text-black mb-4">Saflec Metal Detectors</h3>
+        <p class="text-sm text-white font-medium mb-6 leading-relaxed">
+          Saflec designs and manufactures high-performance metal detection systems, including walk-through, handheld, and conveyor-mounted detectors for security, mining, and industrial applications. Their flagship product, Goldfinger, offers superior sensitivity and fibreglass durability. They also produce industrial light dimmers and offer tailored solutions, exporting globally from South Africa through a trusted partner network.
+        </p>
+        <a href="https://www.saflec.com" target="_blank" rel="noopener noreferrer"
+		   class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+		   Visit Saflec
+		</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Resources Section -->
+<section id="resources" class="bg-gradient-to-tl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+    <!-- Dotted Overlay -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
+      </svg>
+    </div>
+    <!-- Section Title -->
+    <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 tracking-tight text-center" data-aos="fade-up">Resources</h2>
+    <p class="text-lg sm:text-xl text-white font-medium text-center mb-16 px-4 sm:px-20" data-aos="fade-up" data-aos-delay="50">
+      Explore helpful documents and tools including our brochures, application forms, and training resources.
+    </p>
+<!-- Filter Tabs -->
+<div class="flex flex-row items-center justify-center space-x-4 mb-12">
+  <button onclick="filterResources('all')" class="tab-btn glass-strong active w-auto px-4 py-2">
+    All
+  </button>
+  <button onclick="filterResources('brochure')" class="tab-btn glass-strong w-auto px-4 py-2">
+    Brochures
+  </button>
+  <button onclick="filterResources('form')" class="tab-btn glass-strong w-auto px-4 py-2">
+    Forms
+  </button>
+</div>
+    <!-- Resource Grid -->
+    <div id="resourceGrid" class="grid gap-12 md:grid-cols-3 xl:grid-cols-3 text-center">
+      <!-- Application Form -->
+      <div class="group relative glass-strong p-6 rounded-3xl transform transition-all duration-500 hover:scale-105 shadow-xl" data-aos="zoom-in-up" data-type="form">
+        <div class="mb-5 flex justify-center">
+          <div class="w-full h-48 flex items-center justify-center rounded-xl overflow-hidden">
+ 		 <img src="HomeResourceApplicationFormImage.png" alt="Application Form" class="w-full h-full object-cover" />
+	  </div>
+        </div>
+        <h3 class="text-2xl font-bold text-black mb-4">Application Form</h3>
+        <p class="text-sm text-white font-medium mb-6 leading-relaxed">
+          Apply to become an official dealer or open an account.
+        </p>
+        <a href="applicationform.html" target="_blank"
+           class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+          <i class="fas fa-file-alt text-black"></i> Open Form
+        </a>
+      </div>
+      <!-- Training Form -->
+      <div class="group relative glass-strong p-6 rounded-3xl transform transition-all duration-500 hover:scale-105 shadow-xl" data-aos="zoom-in-up" data-type="form">
+        <div class="mb-5 flex justify-center">
+          <div class="w-full h-48 flex items-center justify-center rounded-xl overflow-hidden">
+            <img src="HomeResourceTrainingImage.png" alt="Training Form" class="w-full h-full object-cover" />
+          </div>
+        </div>
+        <h3 class="text-2xl font-bold text-black mb-4">Training Form</h3>
+        <p class="text-sm text-white font-medium mb-6 leading-relaxed">
+          Register for a hands-on training session with our team.
+        </p>
+        <a href="trainingform.html" target="_blank"
+           class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+          <i class="fas fa-file-alt text-black"></i> Apply Now
+        </a>
+      </div>
+<!-- SACS Brochure -->
+<div class="group relative glass-strong p-6 rounded-3xl transform transition-all duration-500 hover:scale-105 shadow-xl" data-aos="zoom-in-up" data-type="brochure">
+  <div class="mb-5 flex justify-center">
+    <div class="w-full h-48 flex items-center justify-center rounded-xl overflow-hidden">
+      <img src="HomeResourceBrochureImage.png" alt="SACS Brochure" class="w-full h-full object-cover" />
+    </div>
+  </div>
+  <h3 class="text-2xl font-bold text-black mb-4">SACS Brochure</h3>
+  <p class="text-sm text-white font-medium mb-2 leading-relaxed">
+    An introduction to our key products and solutions.
+  </p>
+
+  <!-- Preview + Download Buttons -->
+  <div class="flex justify-center gap-4">
+    <!-- Preview Button -->
+    <button onclick="openBrochureModal('SACSBrochure.pdf')" class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+      <i class="fas fa-eye text-black"></i> Preview
+    </button>
+
+    <!-- Download Button -->
+    <a href="SACSBrochure.pdf" download class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105">
+      <i class="fas fa-download text-black"></i> Download
+    </a>
+  </div>
+</div>
+
+<!-- PDF Preview Modal -->
+<div id="brochureModal" class="fixed inset-0 z-50 flex items-start justify-center bg-black/70 hidden p-4" onclick="closeBrochureModal()">
+  <div 
+    class="relative mt-28 bg-white dark:bg-gray-900 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl flex flex-col" 
+    onclick="event.stopPropagation()">
+    
+    <!-- Close Button -->
+    <button onclick="closeBrochureModal()" class="absolute top-2 right-3 text-gray-700 dark:text-white hover:text-red-500 text-2xl z-10">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <!-- Responsive Iframe -->
+    <div class="flex-grow overflow-auto">
+      <iframe 
+        id="brochureFrame" 
+        src="" 
+        class="w-full h-[75vh] sm:h-[80vh] rounded-b-2xl" 
+        frameborder="0"
+      ></iframe>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- News Section -->
+<section id="news" class="bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <!-- Dotted Overlay -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
+      </svg>
+    </div>
+	<!-- Section Heading -->
+	  <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight text-center" data-aos="fade-up">
+	    Our Latest News
+	  </h2>
+	  <p class="max-w-2xl mx-auto mb-12 text-lg text-white text-center" data-aos="fade-up" data-aos-delay="100">
+		Stay informed with the latest updates, product innovations, and industry insights from Saflec Systems.
+	  </p>
+    <div class="grid gap-10 md:grid-cols-3 text-center">
+      <!-- Card 1 -->
+      <article tabindex="0" role="button" aria-expanded="false" aria-controls="post1"
+        class="group glass-strong p-6 rounded-3xl transition hover:-translate-y-1 hover:scale-[1.03] shadow-xl cursor-pointer"
+        onclick="togglePostContent(this)" onkeydown="if(event.key==='Enter'){togglePostContent(this)}" data-aos="zoom-in-up">
+        <div class="text-xs text-black/80 mb-3 font-semibold space-x-2">
+          <span>2025-09-24</span><span>•</span><span>Public Holiday</span><span>•</span><a href="https://www.facebook.com/SaflecSys/" target="_blank" class="text-black hover:underline">Facebook</a>
+        </div>
+        <h4 class="text-xl font-bold text-black mb-3">Heritage Day</h4>
+        <p id="post1" class="text-sm text-black/90 hidden md:block">This Heritage Day, we celebrate the diverse cultures that define us and the need to protect what matters most. Secure your legacy while honouring your roots. #HeritageDay #ProudlySouthAfrican #AccessControl #SecureOurHeritage #SaflecSystems #Saflec #SaflecGroup</p>
+      </article>
+      <!-- Card 2 -->
+      <article tabindex="0" role="button" aria-expanded="false" aria-controls="post2"
+        class="group glass-strong p-6 rounded-3xl transition hover:-translate-y-1 hover:scale-[1.03] shadow-xl cursor-pointer"
+        onclick="togglePostContent(this)" onkeydown="if(event.key==='Enter'){togglePostContent(this)}" data-aos="zoom-in-up" data-aos-delay="100">
+        <div class="text-xs text-black/80 mb-3 font-semibold space-x-2">
+          <span>2025-09-22</span><span>•</span><span>Training</span><span>•</span><a href="https://www.instagram.com/saflecgroup/" target="_blank" class="text-black hover:underline">Instagram</a>
+        </div>
+        <h4 class="text-xl font-bold text-black mb-3">Advanced Intelligent Systems Training</h4>
+        <p id="post2" class="text-sm text-black/90 hidden md:block">Ready to elevate security! Advanced Intelligent Systems begins their certification journey as an official installer of our reliable access control solutions. Welcome aboard! #AccessControlTraining #CertifiedInstaller #SecureWithUs #SaflecSystems #Saflec #SaflecGroup #AdvancedIntelligentSystems</p>
+      </article>
+      <!-- Card 3 -->
+      <article tabindex="0" role="button" aria-expanded="false" aria-controls="post3"
+        class="group glass-strong p-6 rounded-3xl transition hover:-translate-y-1 hover:scale-[1.03] shadow-xl cursor-pointer"
+        onclick="togglePostContent(this)" onkeydown="if(event.key==='Enter'){togglePostContent(this)}" data-aos="zoom-in-up" data-aos-delay="200">
+        <div class="text-xs text-black/80 mb-3 font-semibold space-x-2">
+          <span>2025-09-17</span><span>•</span><span>Training</span><span>•</span><a href="https://www.linkedin.com/company/saflec-systems-pty-ltd./posts/?feedView=all" target="_blank" class="text-black hover:underline">LinkedIn</a>
+        </div>
+        <h4 class="text-xl font-bold text-black mb-3">Quatro Training</h4>
+        <p id="post3" class="text-sm text-black/90 hidden md:block">Gearing up for greatness! Quatro stopped by to start their journey as an official installer of our trusted access control products. #AccessControlTraining #CertifiedInstaller #SecureWithUs #SaflecSystems #Saflec #SaflecGroup #Quatro</p>
+      </article>
+      <!-- Card 4 -->
+      <article tabindex="0" role="button" aria-expanded="false" aria-controls="post4"
+        class="group glass-strong p-6 rounded-3xl transition hover:-translate-y-1 hover:scale-[1.03] shadow-xl cursor-pointer"
+        onclick="togglePostContent(this)" onkeydown="if(event.key==='Enter'){togglePostContent(this)}" data-aos="zoom-in-up" data-aos-delay="300">
+        <div class="text-xs text-black/80 mb-3 font-semibold space-x-2">
+          <span>2025-09-12</span><span>•</span><span>Saflec Systems</span><span>•</span><a href="https://x.com/SaflecSystems" target="_blank" class="text-black hover:underline">Twitter/X</a>
+        </div>
+        <h4 class="text-xl font-bold text-black mb-3">Training</h4>
+        <p id="post4" class="text-sm text-black/90 hidden md:block">Join our training to become a certified installer of Saflec Systems products - gain hands-on experience, expert guidance, and industry-recognized certification to elevate your access control expertise.</p>
+      </article>
+      <!-- Card 5 -->
+      <article tabindex="0" role="button" aria-expanded="false" aria-controls="post5"
+        class="group glass-strong p-6 rounded-3xl transition hover:-translate-y-1 hover:scale-[1.03] shadow-xl cursor-pointer"
+        onclick="togglePostContent(this)" onkeydown="if(event.key==='Enter'){togglePostContent(this)}" data-aos="zoom-in-up" data-aos-delay="400">
+        <div class="text-xs text-black/80 mb-3 font-semibold space-x-2">
+          <span>2025-09-08</span><span>•</span><span>Security Tips</span><span>•</span><a href="https://www.tiktok.com/@saflecgroup" target="_blank" class="text-black hover:underline">TikTok</a>
+        </div>
+        <h4 class="text-xl font-bold text-black mb-3">Why Access Control?</h4>
+        <p id="post5" class="text-sm text-black/90 hidden md:block">Why access control? Because security is essential. Manage who enters, when, and where to safeguard your people, property, and data. Stay protected with smart, reliable solutions. #AccessControl #SmartSecurity #SaflecSystems #Saflec #SaflecGroup</p>
+      </article>
+      <!-- Card 6 -->
+      <article tabindex="0" role="button" aria-expanded="false" aria-controls="post6"
+        class="group glass-strong p-6 rounded-3xl transition hover:-translate-y-1 hover:scale-[1.03] shadow-xl cursor-pointer"
+        onclick="togglePostContent(this)" onkeydown="if(event.key==='Enter'){togglePostContent(this)}" data-aos="zoom-in-up" data-aos-delay="500">
+        <div class="text-xs text-black/80 mb-3 font-semibold space-x-2">
+          <span>2025-09-03</span><span>•</span><span>Saflec Systems</span><span>•</span><a href="https://www.threads.com/@saflecgroup" target="_blank" class="text-black hover:underline">Threads</a>
+        </div>
+        <h4 class="text-xl font-bold text-black mb-3">About Saflec Systems</h4>
+        <p id="post6" class="text-sm text-black/90 hidden md:block">Saflec Systems delivers trusted, innovative access control solutions, proudly developed in South Africa. As part of the Saflec Group, we collaborate with Saflec, experts in metal detection. Learn more at www.saflec.com. #SaflecSystems #Saflec #SaflecGroup</p>
+      </article>
+    </div>
+    <!-- Archive Button -->
+    <div class="text-center mt-12">
+	  <button onclick="document.getElementById('archiveModal').classList.remove('hidden')"
+		class="glass-button inline-flex items-center justify-center gap-2 text-black px-6 py-2 rounded-full transition-all hover:scale-105 bg-white/40 backdrop-blur-md">
+		Visit our Archives
+	  </button>
+    </div>
+  </div>
+</section>
+<!-- Archive Modal -->
+<div id="archiveModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="glass-strong max-w-md sm:max-w-xl rounded-2xl p-6 sm:p-8 shadow-xl relative max-h-[90vh] overflow-y-auto w-full mx-4 sm:mx-0">
+    <button onclick="document.getElementById('archiveModal').classList.add('hidden')" class="absolute top-4 right-5 text-white text-3xl hover:text-red-600 font-bold">&times;</button>
+    <h3 class="text-2xl sm:text-3xl font-bold text-bl mb-6 text-center">Saflec Systems Archives</h3>
+    <p class="text-sm text-black mb-8 text-center">View highlights, product launches, and news from previous years.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-center">
+      <a href="2025.html" class="block glass-button bg-white/10 hover:bg-white/20 text-black font-semibold py-3 rounded-xl shadow-sm transition">2025</a>
+      <a href="2024.html" class="block glass-button bg-white/10 hover:bg-white/20 text-black font-semibold py-3 rounded-xl shadow-sm transition">2024</a>
+      <a href="2023.html" class="block glass-button bg-white/10 hover:bg-white/20 text-black font-semibold py-3 rounded-xl shadow-sm transition">2023</a>
+      <a href="2022.html" class="block glass-button bg-white/10 hover:bg-white/20 text-black font-semibold py-3 rounded-xl shadow-sm transition">2022</a>
+      <a href="2021.html" class="block glass-button bg-white/10 hover:bg-white/20 text-black font-semibold py-3 rounded-xl shadow-sm transition">2021</a>
+    </div>
+  </div>
+</div>
+
+<!-- Team Section -->
+<section id="team" class="bg-gradient-to-tl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
+    <!-- Dotted Overlay -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
+      </svg>
+    </div>
+	<!-- Section Heading -->
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-10 text-center" data-aos="fade-up">Our Team</h2>
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" data-aos="fade-up" data-aos-delay="100">
+	  <button class="team-filter-btn glass-button w-full sm:w-auto px-5 py-2 rounded-full transition text-sm sm:text-base active" data-dept="all">The Team</button>
+	  <button class="team-filter-btn glass-button w-full sm:w-auto px-5 py-2 rounded-full transition text-sm sm:text-base" data-dept="Customer Success">Customer Success</button>
+	  <button class="team-filter-btn glass-button w-full sm:w-auto px-5 py-2 rounded-full transition text-sm sm:text-base" data-dept="Engineering">Engineering</button>
+	  <button class="team-filter-btn glass-button w-full sm:w-auto px-5 py-2 rounded-full transition text-sm sm:text-base" data-dept="Operations">Operations</button>
+    </div>
+    <!-- Team Grid -->
+    <div id="team-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" data-aos="fade-up" data-aos-delay="200" style="transition: opacity 0.3s ease;">
+      <!-- Cards inserted here by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Full-width gradient background wrapper -->
+<div class="bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] py-20 px-4 sm:px-6 lg:px-8 text-gray-900 relative overflow-hidden">
+  <section id="contact" class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24" aria-label="Contact Saflec Systems">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+	    <!-- Dotted Overlay -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-10">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dotPattern" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
+      </svg>
+    </div>
+	<!-- Section Heading -->
+      <h2 class="text-4xl font-extrabold text-black drop-shadow-lg">Contact Us Today</h2>
+      <p class="mt-3 text-black text-lg">We’d love to hear from you. Reach out with any questions or requests.</p>
+    </div>
+    <div class="lg:flex lg:space-x-12">
+      <!-- Contact Form -->
+      <form id="contact-form" class="bg-white/30 glass rounded-xl shadow-lg p-8 flex-1" aria-label="Contact form" novalidate>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Name -->
+          <div>
+            <label for="name" class="block text-white font-semibold mb-2">Name & Surname <span class="text-red-500">*</span></label>
+            <input type="text" id="name" name="name" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 placeholder-white/80 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" placeholder="John Doe" required autocomplete="name" aria-required="true" />
+          </div>
+          <!-- Email -->
+          <div>
+            <label for="userEmail" class="block text-white font-semibold mb-2">Your Email Address <span class="text-red-500">*</span></label>
+            <input type="email" id="userEmail" name="email" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 placeholder-white/80 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" placeholder="email@example.com" required autocomplete="email" aria-required="true" />
+          </div>
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-white font-semibold mb-2">Phone Number <span class="text-red-500">*</span></label>
+            <input type="tel" id="phone" name="phone" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 placeholder-white/80 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" placeholder="+27 11 123 4567" autocomplete="tel" required aria-required="true" />
+          </div>
+          <!-- Client Type -->
+          <div>
+            <label for="clientType" class="block text-white font-semibold mb-2">Client Type <span class="text-red-500">*</span></label>
+            <select id="clientType" name="clientType" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" required aria-required="true">
+              <option class="text-black" value="" disabled selected>Select client type</option>
+              <option class="text-black" value="End User">End User</option>
+              <option class="text-black" value="Installer">Installer</option>
+              <option class="text-black" value="Other">Other</option>
+            </select>
+          </div>
+          <!-- Send To -->
+          <div>
+            <label for="emailSelect" class="block text-white font-semibold mb-2">Send To <span class="text-red-500">*</span></label>
+            <select id="emailSelect" name="recipient" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" required aria-required="true">
+              <option class="text-black" value="" disabled selected>Select recipient</option>
+              <option class="text-black" value="info@saflecsystems.co.za">Info</option>
+              <option class="text-black" value="hanu@saflecsystems.co.za">Marketing</option>
+              <option class="text-black" value="support@saflecsystems.co.za">Support</option>
+              <option class="text-black" value="sales@saflecsystems.co.za">Sales</option>
+              <option class="text-black" value="training@saflecsystems.co.za">Training</option>
+            </select>
+          </div>
+          <!-- Subject -->
+          <div>
+            <label for="subject" class="block text-white font-semibold mb-2">Subject <span class="text-red-500">*</span></label>
+            <select id="subject" name="subject" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" required aria-required="true">
+              <option class="text-black" value="" disabled selected>Select subject</option>
+              <option class="text-black" value="General Info">General Info</option>
+              <option class="text-black" value="Marketing">Marketing</option>
+              <option class="text-black" value="Repairs">Repairs</option>
+              <option class="text-black" value="Request A Quote">Quote</option>
+              <option class="text-black" value="Support">Support</option>
+              <option class="text-black" value="Need Saflec Systems Training">Training</option>
+              <option class="text-black" value="Other">Other</option>
+            </select>
+          </div>
+          <!-- Message -->
+          <div class="md:col-span-2">
+            <label for="message" class="block text-white font-semibold mb-2">Message <span class="text-red-500">*</span></label>
+            <textarea id="message" name="message" rows="5" class="w-full rounded-md border border-white/50 bg-white/20 text-white px-4 py-3 placeholder-white/80 focus:border-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition resize-none" placeholder="Your message here..." required aria-required="true"> </textarea>
+          </div>
+          <!-- Submit Button -->
+          <div class="md:col-span-2 flex justify-center">
+            <button type="submit" class="glass-button font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 focus:outline-none focus:ring-4 transition-transform duration-200">
+              Send Message
+            </button>
+          </div>
+        </div>
+      </form>
+      <!-- Get in Touch Info -->
+      <aside class="mt-12 lg:mt-0 lg:w-1/2 bg-white/30 glass rounded-xl shadow-lg p-8 flex flex-col justify-between text-white" aria-label="Get in touch information">
+        <div>
+          <h3 class="text-3xl font-extrabold mb-8 text-center text-black drop-shadow-lg">Get in Touch</h3>
+          <div class="space-y-8 text-base leading-relaxed">
+            <address class="not-italic space-y-4">
+              <!-- Office Address -->
+              <div class="flex items-start gap-4">
+                <span class="text-black text-xl shrink-0" aria-hidden="true"><i class="fas fa-building"></i></span>
+                <div>
+                  <p class="font-semibold text-black">Office Address</p>
+                  <p class="text-white">522 Ontdekkers Rd, Florida Hills, Johannesburg, 1716</p>
+                </div>
+              </div>
+              <!-- Factory Address -->
+              <div class="flex items-start gap-4">
+                <span class="text-black text-xl shrink-0" aria-hidden="true"><i class="fas fa-industry"></i></span>
+                <div>
+                  <p class="font-semibold text-black">Factory Address</p>
+                  <p class="text-white">48 Richard Rd, Industria North, Johannesburg, 1709</p>
+                </div>
+              </div>
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <a href="tel:+27114774760" class="flex items-start gap-4 hover:text-blue-700 transition" aria-label="Call phone number">
+                  <span class="text-black text-xl shrink-0" aria-hidden="true"><i class="fas fa-phone-alt"></i></span>
+                  <div>
+                    <p class="font-semibold text-black">Phone</p>
+                    <p class="text-white">+27 11 477 4760</p>
+                  </div>
+                </a>
+              </div>
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <span class="text-black text-xl shrink-0" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+                <div>
+                  <p class="font-semibold text-black">Email Address</p>
+                  <p class="text-white">info@saflecsystems.co.za</p>
+		  <p class="text-white">sales@saflecsystems.co.za</p>
+                </div>
+              </div>
+              <!-- Business Hours -->
+              <div class="flex items-start gap-4">
+                <span class="text-black text-xl shrink-0" aria-hidden="true"><i class="fas fa-clock"></i></span>
+                <div>
+                  <p class="font-semibold text-black">Business Hours</p>
+                  <p class="text-white">Mon–Thu: 08:00–16:30 <br /> Fri: 08:00–15:00</p>
+                </div>
+              </div>
+            </address>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<footer class="w-full py-4 text-center text-sm text-black bg-gradient-to-tl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6]">
+  <div>© 2025 Saflec Systems. All rights reserved.</div>
+  <div>Image assets courtesy of <a href="https://www.canva.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-800">Canva</a>.</div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" aria-label="Back to Top"
+  class="fixed bottom-6 right-6 z-50 hidden p-3 rounded-full glass-strong text-white backdrop-blur-lg shadow-xl hover:scale-110 transition duration-300"
+  onclick="scrollToTop()">
+  <i class="fas fa-chevron-up text-xl"></i>
+</button>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
