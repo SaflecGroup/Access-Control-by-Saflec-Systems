@@ -1,14 +1,15 @@
-html {
+html, body {
   overflow-x: hidden;
   scroll-behavior: smooth;
-}
-
-body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   position: relative;
   z-index: 0;
   color: black;
+
+  /* Background gradient equivalent to Tailwind's `bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6]` */
+  background: linear-gradient(to bottom left, #2C6E91, #4BA3C7, #B2E0F6);
+  min-height: 100vh;
 }
 
 /* ====== Glassmorphism Base ====== */
