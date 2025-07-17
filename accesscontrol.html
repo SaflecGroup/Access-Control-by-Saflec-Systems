@@ -797,7 +797,10 @@ a:hover {
   const cartClearBtn = document.getElementById('cart-clear-btn');
   const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 
-  let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  // Clear cart on page load (refresh)
+  localStorage.removeItem(STORAGE_KEY);
+
+  let cartItems = [];
 
   function saveCart() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
@@ -889,48 +892,61 @@ a:hover {
 
     emailBody += '%0D%0AThank you.';
 
+    // Clear cart before opening mail client
+    cartItems = [];
+    saveCart();
+    renderCart();
+
     window.location.href = `mailto:sales@saflec.co.za?subject=Quote Request&body=${emailBody}`;
+  });
+
+  // Clear cart on page unload (closing tab or navigating away)
+  window.addEventListener('beforeunload', () => {
+    localStorage.removeItem(STORAGE_KEY);
   });
 
   // 🚀 On page load
   renderCart();
-// Tabs toggle logic
-const tabSaflecBtn = document.getElementById('tab-saflec');
-const tabThirdPartyBtn = document.getElementById('tab-third-party');
-const saflecSection = document.getElementById('saflec-systems');
-const thirdPartySection = document.getElementById('third-party-products');
 
-function selectTab(tab) {
-  if (tab === 'saflec') {
-    saflecSection.classList.remove('hidden');
-    thirdPartySection.classList.add('hidden');
+  // ------------------------
+  // Tabs toggle logic
+  // ------------------------
+  const tabSaflecBtn = document.getElementById('tab-saflec');
+  const tabThirdPartyBtn = document.getElementById('tab-third-party');
+  const saflecSection = document.getElementById('saflec-systems');
+  const thirdPartySection = document.getElementById('third-party-products');
 
-    tabSaflecBtn.setAttribute('aria-selected', 'true');
-    tabSaflecBtn.classList.add('bg-[#4BA3C7]');
-    tabSaflecBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+  function selectTab(tab) {
+    if (tab === 'saflec') {
+      saflecSection.classList.remove('hidden');
+      thirdPartySection.classList.add('hidden');
 
-    tabThirdPartyBtn.setAttribute('aria-selected', 'false');
-    tabThirdPartyBtn.classList.remove('bg-[#4BA3C7]');
-    tabThirdPartyBtn.classList.add('bg-transparent', 'border', 'border-white/50');
-  } else if (tab === 'third-party') {
-    saflecSection.classList.add('hidden');
-    thirdPartySection.classList.remove('hidden');
+      tabSaflecBtn.setAttribute('aria-selected', 'true');
+      tabSaflecBtn.classList.add('bg-[#4BA3C7]');
+      tabSaflecBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
 
-    tabThirdPartyBtn.setAttribute('aria-selected', 'true');
-    tabThirdPartyBtn.classList.add('bg-[#4BA3C7]');
-    tabThirdPartyBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+      tabThirdPartyBtn.setAttribute('aria-selected', 'false');
+      tabThirdPartyBtn.classList.remove('bg-[#4BA3C7]');
+      tabThirdPartyBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+    } else if (tab === 'third-party') {
+      saflecSection.classList.add('hidden');
+      thirdPartySection.classList.remove('hidden');
 
-    tabSaflecBtn.setAttribute('aria-selected', 'false');
-    tabSaflecBtn.classList.remove('bg-[#4BA3C7]');
-    tabSaflecBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+      tabThirdPartyBtn.setAttribute('aria-selected', 'true');
+      tabThirdPartyBtn.classList.add('bg-[#4BA3C7]');
+      tabThirdPartyBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+
+      tabSaflecBtn.setAttribute('aria-selected', 'false');
+      tabSaflecBtn.classList.remove('bg-[#4BA3C7]');
+      tabSaflecBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+    }
   }
-}
 
-// Initialize default tab
-selectTab('saflec');
+  // Initialize default tab
+  selectTab('saflec');
 
-tabSaflecBtn.addEventListener('click', () => selectTab('saflec'));
-tabThirdPartyBtn.addEventListener('click', () => selectTab('third-party'));
+  tabSaflecBtn.addEventListener('click', () => selectTab('saflec'));
+  tabThirdPartyBtn.addEventListener('click', () => selectTab('third-party'));
 </script>
 
 </body>
