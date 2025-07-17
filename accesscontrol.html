@@ -299,58 +299,55 @@ a:hover {
 
 <main class="mx-auto p-4 md:p-6 space-y-8" style="max-width: 90rem;">
 
+  <!-- Tabs -->
+  <div class="flex justify-center space-x-4 mb-8">
+    <button
+      id="tab-saflec"
+      class="px-6 py-2 font-semibold rounded-md bg-[#4BA3C7] text-white"
+      aria-selected="true"
+      role="tab"
+      aria-controls="saflec-systems"
+      type="button"
+    >
+      Saflec Systems Products
+    </button>
+    <button
+      id="tab-third-party"
+      class="px-6 py-2 font-semibold rounded-md bg-transparent text-white border border-white/50 hover:bg-white/20"
+      aria-selected="false"
+      role="tab"
+      aria-controls="third-party-products"
+      type="button"
+    >
+      3rd Party Products
+    </button>
+  </div>
+
 <!-- Saflec Systems Section -->
-<section id="saflec-systems" class="mt-12">
-  <div class="glass-strong rounded-2xl p-6 md:p-8 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-bold cursor-pointer">Saflec Systems</h2>
-    <p class="text-white text-sm mt-2">
-      Saflec Systems is a trusted manufacturer of modular access control and time management solutions. With flexible integrations and powerful software, they serve high-security sectors with reliable, scalable systems.
+<section id="saflec-systems" class="mt-12 text-white">
+  <div class="text-center px-4 md:px-8 max-w-4xl mx-auto mb-10">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black">
+      Saflec Systems
+    </h2>
+    <p class="text-white/90 text-base md:text-lg">
+      Saflec Systems delivers modular, powerful access control software and hardware built for flexibility and scale.
     </p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
-    <!-- Saflec Product Example -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
     <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Saflec Systems 1" class="product-image rounded-lg" />
+      <img src="https://via.placeholder.com/400x250" alt="Saflec Product" class="product-image rounded-lg" />
       <div class="flex-1 flex flex-col justify-between">
         <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Saflec Systems 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Description for Variant A</p>
+          <h3 class="product-title text-lg md:text-xl font-bold mb-2">SACS Controller</h3>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Variant A description</p>
         </div>
-        <div class="variant-selector flex gap-2 mb-4" role="radiogroup" aria-label="Select product variant">
-          <button
-            type="button"
-            class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white"
-            aria-checked="true"
-            role="radio"
-            data-variant-index="0"
-          >
-            Variant A
-          </button>
-          <button
-            type="button"
-            class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent"
-            aria-checked="false"
-            role="radio"
-            data-variant-index="1"
-          >
-            Variant B
-          </button>
+        <div class="variant-selector flex gap-2 mb-4">
+          <button type="button" class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+          <button type="button" class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
         </div>
         <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button
-            class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn"
-            data-product="SSP-001-A"
-            type="button"
-          >
-            Add to Quote
-          </button>
-          <button
-            title="Learn More"
-            aria-label="Learn More about Saflec Systems 1"
-            class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3"
-            data-brochure="saflec-systems-1.pdf"
-            type="button"
-          >
+          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SSP-001-A" type="button">Add to Quote</button>
+          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="saflec-brochure.pdf" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
             </svg>
@@ -362,36 +359,93 @@ a:hover {
 </section>
 
 <script>
-  (function() {
+  (function () {
     const section = document.getElementById('saflec-systems');
     const card = section.querySelector('.album-card');
     const variantButtons = card.querySelectorAll('.variant-btn');
     const desc = card.querySelector('.product-desc');
     const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
 
-    // Variant data with product codes and descriptions
     const variants = [
-      {
-        desc: 'Description for Variant A',
-        productCode: 'SSP-001-A'
-      },
-      {
-        desc: 'Description for Variant B',
-        productCode: 'SSP-001-B'
-      }
+      { desc: 'Variant A description', productCode: 'SSP-001-A' },
+      { desc: 'Variant B description', productCode: 'SSP-001-B' }
+    ];
+
+    variantButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantButtons.forEach(b => b.classList.remove('selected', 'bg-[#4BA3C7]'));
+        btn.classList.add('selected', 'bg-[#4BA3C7]');
+        const index = +btn.dataset.variantIndex;
+        desc.textContent = variants[index].desc;
+        addToQuoteBtn.dataset.product = variants[index].productCode;
+      });
+    });
+
+    addToQuoteBtn.addEventListener('click', () => {
+      const productCode = addToQuoteBtn.dataset.product;
+      console.log("Added to quote:", productCode);
+    });
+  })();
+</script>
+
+  <!-- 3rd Party Products Section -->
+  <section id="third-party-products" class="mt-12 hidden" role="tabpanel" aria-labelledby="tab-third-party">
+<!-- Hikvision Section -->
+<section id="hikvision" class="mt-12 text-white">
+  <div class="text-center px-4 md:px-8 max-w-4xl mx-auto mb-10">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black">
+      Hikvision
+    </h2>
+    <p class="text-white/90 text-base md:text-lg">
+      Hikvision provides advanced video surveillance and access control systems with integrated security solutions.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+      <img src="https://via.placeholder.com/400x250" alt="Hikvision Access Control" class="product-image rounded-lg" />
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Hikvision Controller</h3>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Description for Variant A</p>
+        </div>
+        <div class="variant-selector flex gap-2 mb-4" role="radiogroup">
+          <button type="button" class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+          <button type="button" class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+        </div>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="HIK-001-A" type="button">Add to Quote</button>
+          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="hikvision-1.pdf" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.getElementById('hikvision');
+    const card = section.querySelector('.album-card');
+    const variantButtons = card.querySelectorAll('.variant-btn');
+    const desc = card.querySelector('.product-desc');
+    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
+
+    const variants = [
+      { desc: 'Description for Variant A', productCode: 'HIK-001-A' },
+      { desc: 'Description for Variant B', productCode: 'HIK-001-B' }
     ];
 
     variantButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         variantButtons.forEach(b => {
-          b.classList.remove('selected', 'bg-[#4BA3C7]', 'text-white', 'border');
+          b.classList.remove('selected', 'bg-[#4BA3C7]', 'text-white');
           b.classList.add('bg-transparent', 'text-white', 'border', 'border-white/50');
-          b.setAttribute('aria-checked', 'false');
         });
         btn.classList.add('selected', 'bg-[#4BA3C7]', 'text-white');
         btn.classList.remove('bg-transparent', 'border');
-        btn.setAttribute('aria-checked', 'true');
-
         const index = parseInt(btn.dataset.variantIndex, 10);
         desc.textContent = variants[index].desc;
         addToQuoteBtn.dataset.product = variants[index].productCode;
@@ -400,12 +454,266 @@ a:hover {
 
     addToQuoteBtn.addEventListener('click', () => {
       const productCode = addToQuoteBtn.dataset.product;
-      alert(`Added to quote: ${productCode}`);
-      // Replace alert with your real "add to quote" logic here
+      console.log("Added to quote:", productCode);
     });
   })();
 </script>
 
+<section id="idemia" class="mt-12 text-white">
+  <div class="text-center px-4 md:px-8 max-w-4xl mx-auto mb-10">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black">
+      IDEMIA
+    </h2>
+    <p class="text-white/90 text-base md:text-lg">
+      IDEMIA specializes in biometric and identity-based access control technologies for secure authentication.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+      <img src="https://via.placeholder.com/400x250" alt="Idemia Device" class="product-image rounded-lg" />
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="product-title text-lg md:text-xl font-bold mb-2">VisionPass Terminal</h3>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Face recognition terminal - Variant A</p>
+        </div>
+        <div class="variant-selector flex gap-2 mb-4">
+          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+        </div>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="IDM-001-A" type="button">Add to Quote</button>
+          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="idemia.pdf" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.getElementById('idemia');
+    const card = section.querySelector('.album-card');
+    const variantButtons = card.querySelectorAll('.variant-btn');
+    const desc = card.querySelector('.product-desc');
+    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
+
+    const variants = [
+      { desc: 'Face recognition terminal - Variant A', productCode: 'IDM-001-A' },
+      { desc: 'Face recognition terminal - Variant B', productCode: 'IDM-001-B' }
+    ];
+
+    variantButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantButtons.forEach(b => b.classList.remove('selected', 'bg-[#4BA3C7]'));
+        btn.classList.add('selected', 'bg-[#4BA3C7]');
+        const index = +btn.dataset.variantIndex;
+        desc.textContent = variants[index].desc;
+        addToQuoteBtn.dataset.product = variants[index].productCode;
+      });
+    });
+
+    addToQuoteBtn.addEventListener('click', () => {
+      const productCode = addToQuoteBtn.dataset.product;
+      console.log("Added to quote:", productCode);
+    });
+  })();
+</script>
+
+<section id="stid" class="mt-12 text-white">
+  <div class="text-center px-4 md:px-8 max-w-4xl mx-auto mb-10">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black">
+      STid
+    </h2>
+    <p class="text-white/90 text-base md:text-lg">
+      STid offers cutting-edge RFID, NFC, and Bluetooth access readers built with security and modularity in mind.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+      <img src="https://via.placeholder.com/400x250" alt="STid Reader" class="product-image rounded-lg" />
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Architect Blue Reader</h3>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Bluetooth & RFID reader - Variant A</p>
+        </div>
+        <div class="variant-selector flex gap-2 mb-4">
+          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+        </div>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="STID-001-A" type="button">Add to Quote</button>
+          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="stid.pdf" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.getElementById('stid');
+    const card = section.querySelector('.album-card');
+    const variantButtons = card.querySelectorAll('.variant-btn');
+    const desc = card.querySelector('.product-desc');
+    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
+
+    const variants = [
+      { desc: 'Bluetooth & RFID reader - Variant A', productCode: 'STID-001-A' },
+      { desc: 'Bluetooth & RFID reader - Variant B', productCode: 'STID-001-B' }
+    ];
+
+    variantButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantButtons.forEach(b => b.classList.remove('selected', 'bg-[#4BA3C7]'));
+        btn.classList.add('selected', 'bg-[#4BA3C7]');
+        const index = +btn.dataset.variantIndex;
+        desc.textContent = variants[index].desc;
+        addToQuoteBtn.dataset.product = variants[index].productCode;
+      });
+    });
+
+    addToQuoteBtn.addEventListener('click', () => {
+      const productCode = addToQuoteBtn.dataset.product;
+      console.log("Added to quote:", productCode);
+    });
+  })();
+</script>
+
+<section id="suprema" class="mt-12 text-white">
+  <div class="text-center px-4 md:px-8 max-w-4xl mx-auto mb-10">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black">
+      Suprema
+    </h2>
+    <p class="text-white/90 text-base md:text-lg">
+      Suprema leads in biometric access control systems, offering fingerprint, face recognition, and RFID solutions.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
+        </div>
+        <div class="variant-selector flex gap-2 mb-4">
+          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+        </div>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
+          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.getElementById('suprema');
+    const card = section.querySelector('.album-card');
+    const variantButtons = card.querySelectorAll('.variant-btn');
+    const desc = card.querySelector('.product-desc');
+    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
+
+    const variants = [
+      { desc: 'Multimodal terminal - Variant A', productCode: 'SUP-001-A' },
+      { desc: 'Multimodal terminal - Variant B', productCode: 'SUP-001-B' }
+    ];
+
+    variantButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantButtons.forEach(b => b.classList.remove('selected', 'bg-[#4BA3C7]'));
+        btn.classList.add('selected', 'bg-[#4BA3C7]');
+        const index = +btn.dataset.variantIndex;
+        desc.textContent = variants[index].desc;
+        addToQuoteBtn.dataset.product = variants[index].productCode;
+      });
+    });
+
+    addToQuoteBtn.addEventListener('click', () => {
+      const productCode = addToQuoteBtn.dataset.product;
+      console.log("Added to quote:", productCode);
+    });
+  })();
+</script>
+
+<section id="virdi" class="mt-12 text-white">
+  <div class="text-center px-4 md:px-8 max-w-4xl mx-auto mb-10">
+    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 tracking-tight relative inline-block text-black">
+      Virdi
+    </h2>
+    <p class="text-white/90 text-base md:text-lg">
+      Virdi delivers access terminals and fingerprint-based systems for high-security environments.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+      <img src="https://via.placeholder.com/400x250" alt="Virdi Terminal" class="product-image rounded-lg" />
+      <div class="flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="product-title text-lg md:text-xl font-bold mb-2">AC-5000 Plus</h3>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Fingerprint terminal - Variant A</p>
+        </div>
+        <div class="variant-selector flex gap-2 mb-4">
+          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+        </div>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="VIR-001-A" type="button">Add to Quote</button>
+          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="virdi.pdf" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.getElementById('virdi');
+    const card = section.querySelector('.album-card');
+    const variantButtons = card.querySelectorAll('.variant-btn');
+    const desc = card.querySelector('.product-desc');
+    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
+
+    const variants = [
+      { desc: 'Fingerprint terminal - Variant A', productCode: 'VIR-001-A' },
+      { desc: 'Fingerprint terminal - Variant B', productCode: 'VIR-001-B' }
+    ];
+
+    variantButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantButtons.forEach(b => b.classList.remove('selected', 'bg-[#4BA3C7]'));
+        btn.classList.add('selected', 'bg-[#4BA3C7]');
+        const index = +btn.dataset.variantIndex;
+        desc.textContent = variants[index].desc;
+        addToQuoteBtn.dataset.product = variants[index].productCode;
+      });
+    });
+
+    addToQuoteBtn.addEventListener('click', () => {
+      const productCode = addToQuoteBtn.dataset.product;
+      console.log("Added to quote:", productCode);
+    });
+  })();
+</script>
 
 </main>
 
@@ -586,6 +894,43 @@ a:hover {
 
   // 🚀 On page load
   renderCart();
+// Tabs toggle logic
+const tabSaflecBtn = document.getElementById('tab-saflec');
+const tabThirdPartyBtn = document.getElementById('tab-third-party');
+const saflecSection = document.getElementById('saflec-systems');
+const thirdPartySection = document.getElementById('third-party-products');
+
+function selectTab(tab) {
+  if (tab === 'saflec') {
+    saflecSection.classList.remove('hidden');
+    thirdPartySection.classList.add('hidden');
+
+    tabSaflecBtn.setAttribute('aria-selected', 'true');
+    tabSaflecBtn.classList.add('bg-[#4BA3C7]');
+    tabSaflecBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+
+    tabThirdPartyBtn.setAttribute('aria-selected', 'false');
+    tabThirdPartyBtn.classList.remove('bg-[#4BA3C7]');
+    tabThirdPartyBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+  } else if (tab === 'third-party') {
+    saflecSection.classList.add('hidden');
+    thirdPartySection.classList.remove('hidden');
+
+    tabThirdPartyBtn.setAttribute('aria-selected', 'true');
+    tabThirdPartyBtn.classList.add('bg-[#4BA3C7]');
+    tabThirdPartyBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+
+    tabSaflecBtn.setAttribute('aria-selected', 'false');
+    tabSaflecBtn.classList.remove('bg-[#4BA3C7]');
+    tabSaflecBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+  }
+}
+
+// Initialize default tab
+selectTab('saflec');
+
+tabSaflecBtn.addEventListener('click', () => selectTab('saflec'));
+tabThirdPartyBtn.addEventListener('click', () => selectTab('third-party'));
 </script>
 
 </body>
