@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Access Control Products</title>
+  <title>Access Control by Saflec Systems</title>
 
+  <!-- Favicon -->
+  <link rel="icon" href="SaflecTabIcon.png" type="image/x-icon" />
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,423 +19,285 @@
   <link rel="icon" type="image/png" sizes="16x16" href="SaflecSystemsLogo.png" />
 
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+body {
+  font-family: 'Inter', sans-serif;
+}
 
-    .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-    .glass-strong {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
+.glass-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-    .album-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
+.album-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 
-    #basket-btn {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      background: rgba(255 255 255 / 0.15);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255 255 255 / 0.3);
-      color: white;
-      border-radius: 9999px;
-      padding: 0.5rem 0.75rem;
-      font-size: 1rem;
-      cursor: pointer;
-      z-index: 9999;
-      min-width: 44px;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      user-select: none;
-    }
+#basket-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255 255 255 / 0.15);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255 255 255 / 0.3);
+  color: white;
+  border-radius: 9999px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 9999;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  user-select: none;
+}
 
-    /* Remove spinner arrows for quantity inputs in cart */
-    #cart-items input[type=number]::-webkit-inner-spin-button,
-    #cart-items input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+/* Remove spinner arrows for quantity inputs in cart */
+#cart-items input[type=number]::-webkit-inner-spin-button,
+#cart-items input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-    #cart-items input[type=number] {
-      -moz-appearance: textfield;
-      width: 4rem;
-      text-align: center;
-      background-color: rgba(255 255 255 / 0.1);
-      border: 1px solid rgba(255 255 255 / 0.3);
-      border-radius: 0.375rem;
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.25rem 0.5rem;
-    }
+#cart-items input[type=number] {
+  -moz-appearance: textfield;
+  width: 4rem;
+  text-align: center;
+  background-color: rgba(255 255 255 / 0.1);
+  border: 1px solid rgba(255 255 255 / 0.3);
+  border-radius: 0.375rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
 
-    #cart-items li {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-      font-weight: 600;
-      gap: 0.5rem;
-    }
+#cart-items li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-weight: 600;
+  gap: 0.5rem;
+}
 
-    #cart-items li .left-side {
-      flex-grow: 1;
-      word-break: break-word;
-    }
+#cart-items li .left-side {
+  flex-grow: 1;
+  word-break: break-word;
+}
 
-    .quantity-remove-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+.quantity-remove-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-    .remove-item {
-      color: #f87171;
-      font-weight: 700;
-      font-size: 1.25rem;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      padding: 0;
-      line-height: 1;
-    }
+.remove-item {
+  color: #f87171;
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
 
-    #cart-modal {
-      position: fixed;
-      top: 72px;
-      right: 0;
-      height: calc(100% - 72px);
-      width: 320px;
-      max-width: 80vw;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      z-index: 50;
-      border-left: 1px solid rgba(255 255 255 / 0.2);
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      border-radius: 0 0 0 12px;
-    }
+/* Sticky header */
+nav.glass-strong {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-    #cart-modal.open {
-      transform: translateX(0);
-    }
+/* Cart modal */
+#cart-modal {
+  position: fixed;
+  top: 72px; /* Space for the sticky header */
+  right: 0;
+  height: calc(100% - 72px); /* Adjust height */
+  width: 320px;
+  max-width: 80vw;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  border-left: 1px solid rgba(255 255 255 / 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 0 0 0 12px;
+}
 
-    #cart-modal .header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1rem;
-      border-bottom: 1px solid rgba(255 255 255 / 0.2);
-    }
+#cart-modal.open {
+  transform: translateX(0);
+}
 
-    #cart-modal .header-bar h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 0;
-    }
+#cart-modal .header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid rgba(255 255 255 / 0.2);
+}
 
-    #cart-close-btn {
-      background: transparent;
-      border: none;
-      color: white;
-      cursor: pointer;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s ease;
-    }
+#cart-modal .header-bar h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
 
-    #cart-close-btn:hover {
-      color: #f87171;
-    }
+#cart-close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
 
-    button,
-    a {
-      transition: none !important;
-    }
+#cart-close-btn:hover {
+  color: #f87171;
+}
 
-    button:hover,
-    a:hover {
-      background-color: unset !important;
-      color: inherit !important;
-    }
+button,
+a {
+  transition: none !important;
+}
 
-    .btn-no-hover {
-      cursor: pointer;
-    }
+button:hover,
+a:hover {
+  background-color: unset !important;
+  color: inherit !important;
+}
 
-    .variant-selector {
-      margin-top: 1rem;
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-    }
+.btn-no-hover {
+  cursor: pointer;
+}
 
-    .variant-btn {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
-      border: 1px solid rgba(255 255 255 / 0.5);
-      background: rgba(255 255 255 / 0.1);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      user-select: none;
-      text-align: center;
-    }
+.variant-selector {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
 
-    .variant-btn.selected {
-      background: rgba(255 255 255 / 0.3);
-      border-color: white;
-    }
+.variant-btn {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255 255 255 / 0.5);
+  background: rgba(255 255 255 / 0.1);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
 
-    .product-image {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: contain;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-      background: rgba(255 255 255 / 0.1);
-      padding: 0.5rem;
-    }
+.variant-btn.selected {
+  background: rgba(255 255 255 / 0.3);
+  border-color: white;
+}
 
-    /* Mobile menu links full width and better tap targets */
-    #mobile-menu a {
-      display: block;
-      padding: 0.75rem 0;
-    }
+.product-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background: rgba(255 255 255 / 0.1);
+  padding: 0.5rem;
+}
 
-    @media (max-width: 768px) {
-      #cart-modal {
-        width: 100vw;
-        max-width: 100vw;
-        border-radius: 0;
-      }
+/* Mobile menu links full width and better tap targets */
+#mobile-menu a {
+  display: block;
+  padding: 0.75rem 0;
+}
 
-      #basket-btn {
-        min-width: 44px;
-        min-height: 44px;
-        font-size: 1rem;
-        padding: 0.5rem;
-      }
+@media (max-width: 768px) {
+  /* Update cart modal on mobile */
+  #cart-modal {
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+  }
 
-      /* Align mobile menu links to the right */
-      #mobile-menu a {
-        text-align: right;
-      }
+  #basket-btn {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 
-      /* Hide product images on mobile */
-      .product-image {
-        display: none;
-      }
-    }
+  /* Align mobile menu links to the right */
+  #mobile-menu a {
+    text-align: right;
+  }
   </style>
   
 </head>
-<body class="bg-gradient-to-b from-blue-300 via-blue-400 to-blue-500 min-h-screen text-white">
+<body class="bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] min-h-screen text-white">
 
-<!-- Header -->
-<header class="glass-strong sticky top-0 left-0 right-0 z-[9999] backdrop-blur-md border-b border-white/20">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-3" style="height: 72px;">
-    <a href="#top" class="flex items-center space-x-2">
-      <img src="New Saflec Systems Logo 21.png" alt="Saflec Systems Logo" class="h-14 sm:h-16 w-auto" />
+<!-- Navigation Bar -->
+<nav class="glass-strong">
+  <div class="container mx-auto flex justify-between items-center px-4 py-4">
+    <a href="#top" aria-label="Saflec Systems Home">
+      <img src="SaflecHeaderLogo.png" alt="Saflec Systems Logo" class="h-12 sm:h-14" />
     </a>
-    <nav class="hidden md:flex space-x-6">
-      <a href="index.html#top" class="text-white font-semibold">Home</a>
-      <a href="#hikvision" class="text-white font-semibold">Hikvision</a>
-      <a href="#idemia" class="text-white font-semibold">Idemia</a>
-      <a href="#saflec" class="text-white font-semibold">Saflec Systems</a>
-      <a href="#stid" class="text-white font-semibold">STid</a>
-      <a href="#suprema" class="text-white font-semibold">Suprema</a>
-      <a href="#virdi" class="text-white font-semibold">Virdi</a>
-    </nav>
-    <button id="nav-toggle" aria-label="Toggle menu" class="md:hidden text-white focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-6 text-sm lg:text-base">
+      <a href="index.html#top" class="text-white font-semibold hover:text-black">Home</a>
+      <a href="index.html#about" class="text-white font-semibold hover:text-black">About</a>
+      <a href="index.html#partners" class="text-white font-semibold hover:text-black">Partners</a>
+      <a href="index.html#products" class="text-white font-semibold hover:text-black">Products</a>
+      <a href="index.html#resources" class="text-white font-semibold hover:text-black">Resources</a>
+      <a href="index.html#news" class="text-white font-semibold hover:text-black">News</a>
+      <a href="index.html#team" class="text-white font-semibold hover:text-black">Team</a>
+      <a href="index.html#contact" class="text-white font-semibold hover:text-black">Contact Us</a>
+    </div>
+
+    <!-- Hamburger Button for Mobile -->
+    <button id="nav-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 text-center bg-white/10 backdrop-blur-sm border-t border-white/20">
-      <a href="index.html#top" class="text-white font-semibold">Home</a>
-      <a href="#hikvision" class="text-white font-semibold">Hikvision</a>
-      <a href="#idemia" class="text-white font-semibold">Idemia</a>
-      <a href="#saflec" class="text-white font-semibold">Saflec Systems</a>
-      <a href="#stid" class="text-white font-semibold">STid</a>
-      <a href="#suprema" class="text-white font-semibold">Suprema</a>
-      <a href="#virdi" class="text-white font-semibold">Virdi</a>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 glass rounded-xl" aria-label="Mobile navigation menu">
+    <a href="index.html#top" class="block py-3 text-black font-semibold hover:text-white">Home</a>
+    <a href="index.html#about" class="block py-3 text-black font-semibold hover:text-white">About</a>
+    <a href="index.html#partners" class="block py-3 text-black font-semibold hover:text-white">Partners</a>
+    <a href="index.html#products" class="flex-1" role="link" aria-label="Products">Products</a>
+    <a href="index.html#resources" class="flex-1" role="link" aria-label="Resources">Resources</a>
+    <a href="index.html#news" class="block py-3 text-black font-semibold hover:text-white">News</a>
+    <a href="index.html#team" class="block py-3 text-black font-semibold hover:text-white">Team</a>
+    <a href="index.html#contact" class="block py-3 text-black font-semibold hover:text-white">Contact Us</a>
   </div>
-</header>
+</nav>
 
-<main class="max-w-7xl mx-auto p-4 md:p-6 space-y-8">
-
-<!-- Hikvision Section -->
-<section id="hikvision">
-  <div class="glass-strong rounded-2xl p-6 md:p-8 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-bold cursor-pointer">Hikvision</h2>
-    <p class="text-white text-sm mt-2">See Far, Go Further — Hikvision offers cutting-edge video surveillance technology with unmatched clarity and reliability. Experience advanced security solutions designed to protect what matters most, enabling smarter monitoring and peace of mind worldwide.</p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
-    <!-- Hikvision Product -->
-    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Hikvision 1 Variant A" class="product-image" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Hikvision 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">hikvision 1 Description</p>
-        </div>
-        <div class="variant-selector" role="radiogroup" aria-label="Select product variant">
-          <button type="button" class="variant-btn selected" aria-checked="true" role="radio" data-variant-index="0">Variant A</button>
-          <button type="button" class="variant-btn" aria-checked="false" role="radio" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button
-            class="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn"
-            data-product="Hikvision 1 - Variant A"
-          >
-            Add to Quote
-          </button>
-          <button title="Learn More" aria-label="Learn More about Hikvision 1"
-            class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3"
-            data-brochure="hikvision-1.pdf">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function() {
-    const section = document.getElementById('hikvision');
-    const card = section.querySelector('.album-card');
-    const variantButtons = card.querySelectorAll('.variant-btn');
-    const desc = card.querySelector('.product-desc');
-    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
-
-    const variants = [
-      {
-        desc: desc.textContent.trim(),
-        productName: addToQuoteBtn.dataset.product
-      },
-      {
-        desc: 'Alternate description for Variant B. Enhanced features and improved performance.',
-        productName: addToQuoteBtn.dataset.product.replace('Variant A', 'Variant B')
-      }
-    ];
-
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-checked', 'true');
-        const index = parseInt(btn.dataset.variantIndex, 10);
-        desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productName;
-      });
-    });
-  })();
-</script>
-
-<!-- Idemia Section -->
-<section id="idemia" class="mt-12">
-  <div class="glass-strong rounded-2xl p-6 md:p-8 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-bold cursor-pointer">Idemia</h2>
-    <p class="text-white text-sm mt-2">Augmented Identity — Idemia is a global leader in trusted identity solutions, empowering governments, enterprises, and individuals with cutting-edge biometric technology, secure digital identities, and seamless authentication. Their innovations drive enhanced security, convenience, and privacy in an increasingly connected world.</p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
-    <!-- Idemia Product -->
-    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://images.unsplash.com/photo-1600267165730-7d4e553a37cc?auto=format&fit=crop&w=400&q=80" alt="Idemia 1 Variant A" class="product-image" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Idemia 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Idemia 1 Description</p>
-        </div>
-        <div class="variant-selector" role="radiogroup" aria-label="Select product variant">
-          <button type="button" class="variant-btn selected" aria-checked="true" role="radio" data-variant-index="0">Variant A</button>
-          <button type="button" class="variant-btn" aria-checked="false" role="radio" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button
-            class="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn"
-            data-product="Idemia 1 - Variant A"
-          >
-            Add to Quote
-          </button>
-          <button title="Learn More" aria-label="Learn More about Idemia 1"
-            class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3"
-            data-brochure="idemia-1.pdf">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function() {
-    const section = document.getElementById('idemia');
-    const card = section.querySelector('.album-card');
-    const variantButtons = card.querySelectorAll('.variant-btn');
-    const desc = card.querySelector('.product-desc');
-    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
-
-    const variants = [
-      {
-        desc: desc.textContent.trim(),
-        productName: addToQuoteBtn.dataset.product
-      },
-      {
-        desc: 'Alternate description for Variant B. Enhanced security and fast biometric authentication.',
-        productName: addToQuoteBtn.dataset.product.replace('Variant A', 'Variant B')
-      }
-    ];
-
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-checked', 'true');
-        const index = parseInt(btn.dataset.variantIndex, 10);
-        desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productName;
-      });
-    });
-  })();
-</script>
+<main class="mx-auto p-4 md:p-6 space-y-8" style="max-width: 90rem;">
 
 <!-- Saflec Systems Section -->
 <section id="saflec-systems" class="mt-12">
@@ -445,19 +310,47 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
     <!-- Saflec Product Example -->
     <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Saflec Systems 1" class="product-image" />
+      <img src="https://via.placeholder.com/400x250" alt="Saflec Systems 1" class="product-image rounded-lg" />
       <div class="flex-1 flex flex-col justify-between">
         <div>
           <h3 class="product-title text-lg md:text-xl font-bold mb-2">Saflec Systems 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Saflec Systems 1 Description</p>
+          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Description for Variant A</p>
         </div>
-        <div class="variant-selector" role="radiogroup" aria-label="Select product variant">
-          <button type="button" class="variant-btn selected" aria-checked="true" role="radio" data-variant-index="0">Standard</button>
-          <button type="button" class="variant-btn" aria-checked="false" role="radio" data-variant-index="1">PoE</button>
+        <div class="variant-selector flex gap-2 mb-4" role="radiogroup" aria-label="Select product variant">
+          <button
+            type="button"
+            class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white"
+            aria-checked="true"
+            role="radio"
+            data-variant-index="0"
+          >
+            Variant A
+          </button>
+          <button
+            type="button"
+            class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent"
+            aria-checked="false"
+            role="radio"
+            data-variant-index="1"
+          >
+            Variant B
+          </button>
         </div>
         <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="Saflec Systems 1 - Standard">Add to Quote</button>
-          <button title="Learn More" aria-label="Learn More about Saflec Systems 1" class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" data-brochure="saflec-systems-1.pdf">
+          <button
+            class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn"
+            data-product="SSP-001-A"
+            type="button"
+          >
+            Add to Quote
+          </button>
+          <button
+            title="Learn More"
+            aria-label="Learn More about Saflec Systems 1"
+            class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3"
+            data-brochure="saflec-systems-1.pdf"
+            type="button"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
             </svg>
@@ -476,245 +369,49 @@
     const desc = card.querySelector('.product-desc');
     const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
 
+    // Variant data with product codes and descriptions
     const variants = [
       {
-        desc: desc.textContent.trim(),
-        productName: addToQuoteBtn.dataset.product
+        desc: 'Description for Variant A',
+        productCode: 'SSP-001-A'
       },
       {
-        desc: 'Alternate description for Variant B. Enhanced integration and user-friendly management tools.',
-        productName: addToQuoteBtn.dataset.product.replace('Variant A', 'Variant B')
+        desc: 'Description for Variant B',
+        productCode: 'SSP-001-B'
       }
     ];
 
     variantButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         variantButtons.forEach(b => {
-          b.classList.remove('selected');
+          b.classList.remove('selected', 'bg-[#4BA3C7]', 'text-white', 'border');
+          b.classList.add('bg-transparent', 'text-white', 'border', 'border-white/50');
           b.setAttribute('aria-checked', 'false');
         });
-        btn.classList.add('selected');
+        btn.classList.add('selected', 'bg-[#4BA3C7]', 'text-white');
+        btn.classList.remove('bg-transparent', 'border');
         btn.setAttribute('aria-checked', 'true');
+
         const index = parseInt(btn.dataset.variantIndex, 10);
         desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productName;
+        addToQuoteBtn.dataset.product = variants[index].productCode;
       });
+    });
+
+    addToQuoteBtn.addEventListener('click', () => {
+      const productCode = addToQuoteBtn.dataset.product;
+      alert(`Added to quote: ${productCode}`);
+      // Replace alert with your real "add to quote" logic here
     });
   })();
 </script>
 
-<!-- STid Section -->
-<section id="stid" class="mt-12">
-  <div class="glass-strong rounded-2xl p-6 md:p-8 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-bold cursor-pointer">STid</h2>
-    <p class="text-white text-sm mt-2">
-      STid is a European leader in high-security RFID, NFC, and Bluetooth access control. Their mobile and touchless readers provide future-ready security and user freedom.
-    </p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
-    <!-- STid Product Example -->
-    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="STid 1" class="product-image" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">STid 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">STid 1 Description</p>
-        </div>
-        <div class="variant-selector" role="radiogroup" aria-label="Select product variant">
-          <button type="button" class="variant-btn selected" aria-checked="true" role="radio" data-variant-index="0">MIFARE</button>
-          <button type="button" class="variant-btn" aria-checked="false" role="radio" data-variant-index="1">BLE</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="STid 1 - MIFARE">Add to Quote</button>
-          <button title="Learn More" aria-label="Learn More about STid 1" class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" data-brochure="stid-1.pdf">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<script>
-  (function() {
-    const section = document.getElementById('stid');
-    const card = section.querySelector('.album-card');
-    const variantButtons = card.querySelectorAll('.variant-btn');
-    const desc = card.querySelector('.product-desc');
-    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
-
-    const variants = [
-      {
-        desc: desc.textContent.trim(),
-        productName: addToQuoteBtn.dataset.product
-      },
-      {
-        desc: 'Alternate description for Variant B. High-frequency RFID with advanced security features.',
-        productName: addToQuoteBtn.dataset.product.replace('Variant A', 'Variant B')
-      }
-    ];
-
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-checked', 'true');
-        const index = parseInt(btn.dataset.variantIndex, 10);
-        desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productName;
-      });
-    });
-  })();
-</script>
-
-<!-- Suprema Section -->
-<section id="suprema" class="mt-12">
-  <div class="glass-strong rounded-2xl p-6 md:p-8 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-bold cursor-pointer">Suprema</h2>
-    <p class="text-white text-sm mt-2">
-      Suprema is a global powerhouse in biometric security. Their award-winning fingerprint, facial recognition, and mobile credential solutions deliver precision and performance.
-    </p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
-    <!-- Suprema Product Example -->
-    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema 1" class="product-image" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema 1 Description</p>
-        </div>
-        <div class="variant-selector" role="radiogroup" aria-label="Select product variant">
-          <button type="button" class="variant-btn selected" aria-checked="true" role="radio" data-variant-index="0">Fingerprint</button>
-          <button type="button" class="variant-btn" aria-checked="false" role="radio" data-variant-index="1">Card</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="Suprema 1 - Fingerprint">Add to Quote</button>
-          <button title="Learn More" aria-label="Learn More about Suprema 1" class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" data-brochure="suprema-1.pdf">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function() {
-    const section = document.getElementById('suprema');
-    const card = section.querySelector('.album-card');
-    const variantButtons = card.querySelectorAll('.variant-btn');
-    const desc = card.querySelector('.product-desc');
-    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
-
-    const variants = [
-      {
-        desc: desc.textContent.trim(),
-        productName: addToQuoteBtn.dataset.product
-      },
-      {
-        desc: 'Alternate description for Variant B. Enhanced biometric accuracy with AI-powered recognition.',
-        productName: addToQuoteBtn.dataset.product.replace('Variant A', 'Variant B')
-      }
-    ];
-
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-checked', 'true');
-        const index = parseInt(btn.dataset.variantIndex, 10);
-        desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productName;
-      });
-    });
-  })();
-</script>
-
-<!-- Virdi Section -->
-<section id="virdi" class="mt-12">
-  <div class="glass-strong rounded-2xl p-6 md:p-8 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-bold cursor-pointer">Virdi</h2>
-    <p class="text-white text-sm mt-2">
-      Virdi specializes in biometric access control and time attendance systems. Known for reliability and innovation, Virdi integrates fingerprint and facial recognition with modern design.
-    </p>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8">
-    <!-- Virdi Product Example -->
-    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Virdi 1" class="product-image" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">Virdi 1</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Virdi 1 Description</p>
-        </div>
-        <div class="variant-selector" role="radiogroup" aria-label="Select product variant">
-          <button type="button" class="variant-btn selected" aria-checked="true" role="radio" data-variant-index="0">Fingerprint</button>
-          <button type="button" class="variant-btn" aria-checked="false" role="radio" data-variant-index="1">RF Card</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-blue-600 text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="Virdi 1 - Fingerprint">Add to Quote</button>
-          <button title="Learn More" aria-label="Learn More about Virdi 1" class="learn-more-btn flex items-center justify-center sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" data-brochure="virdi-1.pdf">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function() {
-    const section = document.getElementById('virdi');
-    const card = section.querySelector('.album-card');
-    const variantButtons = card.querySelectorAll('.variant-btn');
-    const desc = card.querySelector('.product-desc');
-    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
-
-    const variants = [
-      {
-        desc: desc.textContent.trim(),
-        productName: addToQuoteBtn.dataset.product
-      },
-      {
-        desc: 'Alternate description for Variant B. Advanced biometric tech with seamless attendance tracking.',
-        productName: addToQuoteBtn.dataset.product.replace('Variant A', 'Variant B')
-      }
-    ];
-
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-checked', 'true');
-        const index = parseInt(btn.dataset.variantIndex, 10);
-        desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productName;
-      });
-    });
-  })();
-</script>
-
-<footer class="glass rounded-2xl p-6 text-center text-white/80 mt-12">
-  <p class="mb-2">Reliable. Secure. Scalable.</p>
-  <p class="text-sm">Saflec Systems - Access Control Made Simple</p>
-</footer>
 </main>
+
+<footer class="w-full py-4 text-center text-sm text-black">
+  <div>© 2025 Saflec Systems. All rights reserved.</div>
+</footer>
 
 <!-- Quote Panel -->
 <div id="cart-modal" class="glass-strong text-white shadow-xl flex flex-col z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="quote-panel-title">
@@ -741,7 +438,7 @@
         Please add your <strong>name</strong> and <strong>company name</strong> in the email. We will send you an official quote shortly.
       </p>
       <p class="mb-2">
-        If not a Saflec Systems Client, please fill out the <a href="/index.html#resources" class="font-semibold text-black hover:text-white transition">Dealer Form</a>
+        If not a Saflec Systems Client, please also fill out the <a href="/index.html#resources" class="font-semibold text-black hover:text-white transition">Dealer Form</a> so we can send you a quote
       </p>
     </div>
   </div>
@@ -752,7 +449,9 @@
 </button>
 
 <script>
-  // Mobile menu toggle
+  // ------------------------
+  // 🌐 Mobile menu toggle
+  // ------------------------
   const navToggle = document.getElementById('nav-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -768,15 +467,21 @@
 
   document.addEventListener('click', (e) => {
     if (!mobileMenu.classList.contains('hidden')) {
-      const clickedInsideHeader = e.target.closest('header');
+      const clickedInsideNav = e.target.closest('nav');
       const clickedInsideMenu = e.target.closest('#mobile-menu');
-      if (!clickedInsideHeader && !clickedInsideMenu) {
+      if (!clickedInsideNav && !clickedInsideMenu) {
         mobileMenu.classList.add('hidden');
       }
     }
   });
 
-  // Quote basket logic
+  // ------------------------
+  // 🛒 Quote basket logic
+  // ------------------------
+
+  const TAB_KEY = "shared";
+  const STORAGE_KEY = `quote_basket_${TAB_KEY}`;
+
   const basketBtn = document.getElementById('basket-btn');
   const cartModal = document.getElementById('cart-modal');
   const cartCloseBtn = document.getElementById('cart-close-btn');
@@ -784,7 +489,11 @@
   const cartClearBtn = document.getElementById('cart-clear-btn');
   const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 
-  let cartItems = [];
+  let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+  function saveCart() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
+  }
 
   function renderCart() {
     cartItemsList.innerHTML = '';
@@ -792,6 +501,7 @@
       cartItemsList.innerHTML = '<li>Your quote basket is empty.</li>';
       return;
     }
+
     cartItems.forEach((item, index) => {
       const li = document.createElement('li');
       li.innerHTML = `
@@ -804,23 +514,29 @@
       cartItemsList.appendChild(li);
     });
 
+    // Quantity update
     cartItemsList.querySelectorAll('input[type="number"]').forEach(input => {
       input.addEventListener('change', (e) => {
         const idx = e.target.dataset.index;
         let val = parseInt(e.target.value, 10);
         if (isNaN(val) || val < 1) val = 1;
         cartItems[idx].qty = val;
+        saveCart();
         renderCart();
       });
     });
 
+    // Remove item
     cartItemsList.querySelectorAll('.remove-item').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const idx = e.target.dataset.index;
         cartItems.splice(idx, 1);
+        saveCart();
         renderCart();
       });
     });
+
+    saveCart();
   }
 
   document.querySelectorAll('.add-to-quote-btn').forEach(btn => {
@@ -832,24 +548,26 @@
       } else {
         cartItems.push({ name: productName, qty: 1 });
       }
+      saveCart();
       renderCart();
     });
   });
 
-  basketBtn.addEventListener('click', () => {
+  basketBtn?.addEventListener('click', () => {
     cartModal.classList.toggle('open');
   });
 
-  cartCloseBtn.addEventListener('click', () => {
+  cartCloseBtn?.addEventListener('click', () => {
     cartModal.classList.remove('open');
   });
 
-  cartClearBtn.addEventListener('click', () => {
+  cartClearBtn?.addEventListener('click', () => {
     cartItems = [];
+    saveCart();
     renderCart();
   });
 
-  cartCheckoutBtn.addEventListener('click', () => {
+  cartCheckoutBtn?.addEventListener('click', () => {
     if (cartItems.length === 0) {
       alert('Your quote basket is empty.');
       return;
@@ -866,6 +584,7 @@
     window.location.href = `mailto:sales@saflec.co.za?subject=Quote Request&body=${emailBody}`;
   });
 
+  // 🚀 On page load
   renderCart();
 </script>
 
