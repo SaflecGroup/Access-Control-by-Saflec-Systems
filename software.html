@@ -473,7 +473,10 @@ a:hover {
   const cartClearBtn = document.getElementById('cart-clear-btn');
   const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 
-  let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  // Clear cart on page load (refresh)
+  localStorage.removeItem(STORAGE_KEY);
+
+  let cartItems = [];
 
   function saveCart() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
@@ -565,7 +568,17 @@ a:hover {
 
     emailBody += '%0D%0AThank you.';
 
+    // Clear cart before opening mail client
+    cartItems = [];
+    saveCart();
+    renderCart();
+
     window.location.href = `mailto:sales@saflec.co.za?subject=Quote Request&body=${emailBody}`;
+  });
+
+  // Clear cart on page unload (closing tab or navigating away)
+  window.addEventListener('beforeunload', () => {
+    localStorage.removeItem(STORAGE_KEY);
   });
 
   // 🚀 On page load
