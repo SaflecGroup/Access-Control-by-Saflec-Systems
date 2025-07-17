@@ -128,9 +128,9 @@ nav.glass-strong {
 /* Cart modal */
 #cart-modal {
   position: fixed;
-  top: 72px; /* Space for the sticky header */
+  top: 89px; /* Space for the sticky header */
   right: 0;
-  height: calc(100% - 72px); /* Adjust height */
+  height: calc(100% - 89px); /* Adjust height */
   width: 320px;
   max-width: 80vw;
   transform: translateX(100%);
@@ -1258,7 +1258,7 @@ a:hover {
   });
 
   // ------------------------
-  // 🛒 Quote basket logic
+  // 🛒 Quote basket logic with persistence and cross-tab sync
   // ------------------------
 
   const TAB_KEY = "shared";
@@ -1271,10 +1271,8 @@ a:hover {
   const cartClearBtn = document.getElementById('cart-clear-btn');
   const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 
-  // Clear cart on page load (refresh)
-  localStorage.removeItem(STORAGE_KEY);
-
-  let cartItems = [];
+  // Load saved cart or start empty
+  let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
   function saveCart() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
@@ -1374,9 +1372,18 @@ a:hover {
     window.location.href = `mailto:sales@saflecsystems.co.za?subject=Quote Request&body=${emailBody}`;
   });
 
-  // Clear cart on page unload (closing tab or navigating away)
-  window.addEventListener('beforeunload', () => {
-    localStorage.removeItem(STORAGE_KEY);
+  // Remove these lines that clear cart on reload/unload
+  // localStorage.removeItem(STORAGE_KEY);
+  // window.addEventListener('beforeunload', () => {
+  //   localStorage.removeItem(STORAGE_KEY);
+  // });
+
+  // Sync cart between tabs in real-time
+  window.addEventListener('storage', (event) => {
+    if (event.key === STORAGE_KEY) {
+      cartItems = JSON.parse(event.newValue) || [];
+      renderCart();
+    }
   });
 
   // 🚀 On page load
