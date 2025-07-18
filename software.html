@@ -131,7 +131,7 @@ nav.glass-strong {
   top: 89px; /* Space for the sticky header */
   right: 0;
   height: calc(100% - 89px); /* Adjust height */
-  width: 320px;
+  width: 387px;
   max-width: 80vw;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
@@ -396,6 +396,31 @@ a:hover {
 <footer class="w-full py-4 text-center text-sm text-black">
   <div>© 2025 Saflec Systems. All rights reserved.</div>
 </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" aria-label="Back to Top"
+  class="fixed bottom-6 right-6 z-50 hidden p-3 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-md shadow-xl hover:scale-110 transition duration-300"
+  onclick="scrollToTop()">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+<!-- Add this just before closing </body> -->
+<script>
+  window.addEventListener("scroll", function () {
+    const backToTop = document.getElementById("backToTop");
+    if (window.scrollY > 300) {
+      backToTop.classList.remove("hidden");
+    } else {
+      backToTop.classList.add("hidden");
+    }
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
 
 <!-- Quote Panel -->
 <div id="cart-modal" class="glass-strong text-white shadow-xl flex flex-col z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="quote-panel-title">
