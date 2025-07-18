@@ -260,17 +260,56 @@ a:hover {
 <body class="bg-gradient-to-bl from-[#2C6E91] via-[#4BA3C7] to-[#B2E0F6] min-h-screen text-white">
 
 <!-- Navigation Bar -->
-<nav class="glass-strong">
+<nav class="glass-strong" role="navigation" aria-label="Main Navigation">
   <div class="container mx-auto flex justify-between items-center px-4 py-4">
-    <a href="#top" aria-label="Saflec Systems Home">
+    <a href="#top" aria-label="Saflec Systems Home" class="flex-shrink-0">
       <img src="SaflecHeaderLogo.png" alt="Saflec Systems Logo" class="h-12 sm:h-14" />
     </a>
+
     <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center space-x-6 text-sm lg:text-base">
+    <div class="hidden md:flex items-center space-x-6 text-sm lg:text-base relative">
       <a href="index.html#top" class="text-white font-semibold hover:text-black">Home</a>
       <a href="index.html#about" class="text-white font-semibold hover:text-black">About</a>
       <a href="index.html#partners" class="text-white font-semibold hover:text-black">Partners</a>
-      <a href="index.html#products" class="text-white font-semibold hover:text-black">Products</a>
+
+      <!-- Products Dropdown -->
+      <div class="relative" id="products-dropdown">
+        <button
+          id="products-btn"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="desktopProductsDropdown"
+          class="text-white font-semibold hover:text-black inline-flex items-center focus:outline-none cursor-pointer select-none"
+          type="button"
+        >
+          Products
+          <svg
+            class="ml-1 h-4 w-4 stroke-current text-black transition-transform duration-200"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 12 8"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M1 1l5 5 5-5" />
+          </svg>
+        </button>
+        <div
+          id="desktopProductsDropdown"
+          class="absolute left-0 hidden mt-2 glass rounded-xl w-44 z-50 text-sm shadow-lg"
+          role="menu"
+          aria-label="Products submenu"
+        >
+          <a href="#hikvision" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Hikvision</a>
+          <a href="#idemia" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Idemia</a>
+          <a href="#stid" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Stid</a>
+          <a href="#suprema" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Suprema</a>
+          <a href="#virdi" class="block px-3 py-2 text-white hover:text-black rounded" role="menuitem">Virdi</a>
+        </div>
+      </div>
+
       <a href="index.html#resources" class="text-white font-semibold hover:text-black">Resources</a>
       <a href="index.html#news" class="text-white font-semibold hover:text-black">News</a>
       <a href="index.html#team" class="text-white font-semibold hover:text-black">Team</a>
@@ -278,22 +317,70 @@ a:hover {
     </div>
 
     <!-- Hamburger Button for Mobile -->
-    <button id="nav-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+    <button
+      id="nav-toggle"
+      class="md:hidden text-white focus:outline-none"
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      type="button"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
+
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 glass rounded-xl" aria-label="Mobile navigation menu">
-    <a href="index.html#top" class="block py-3 text-black font-semibold hover:text-white">Home</a>
-    <a href="index.html#about" class="block py-3 text-black font-semibold hover:text-white">About</a>
-    <a href="index.html#partners" class="block py-3 text-black font-semibold hover:text-white">Partners</a>
-    <a href="index.html#products" class="flex-1" role="link" aria-label="Products">Products</a>
-    <a href="index.html#resources" class="flex-1" role="link" aria-label="Resources">Resources</a>
-    <a href="index.html#news" class="block py-3 text-black font-semibold hover:text-white">News</a>
-    <a href="index.html#team" class="block py-3 text-black font-semibold hover:text-white">Team</a>
-    <a href="index.html#contact" class="block py-3 text-black font-semibold hover:text-white">Contact Us</a>
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden px-4 pb-4 space-y-2 glass rounded-xl"
+    aria-label="Mobile navigation menu"
+    role="menu"
+  >
+    <a href="index.html#top" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Home</a>
+    <a href="index.html#about" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">About</a>
+    <a href="index.html#partners" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Partners</a>
+
+    <!-- Mobile Products Dropdown -->
+    <details class="group glass rounded-xl p-2" role="group" aria-label="Products submenu">
+      <summary
+        class="flex justify-between items-center py-3 cursor-pointer text-black font-semibold hover:text-white list-none"
+        role="button"
+        aria-expanded="false"
+        aria-controls="mobile-products-list"
+      >
+        Products
+        <svg
+          class="h-5 w-5 stroke-current transition-transform duration-200 group-open:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <div
+        id="mobile-products-list"
+        class="pl-4 space-y-1 mt-1"
+        role="menu"
+      >
+        <a href="#hikvision" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Hikvision</a>
+        <a href="#idemia" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Idemia</a>
+        <a href="#stid" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Stid</a>
+        <a href="#suprema" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Suprema</a>
+        <a href="#virdi" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Virdi</a>
+      </div>
+    </details>
+
+    <a href="index.html#resources" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Resources</a>
+    <a href="index.html#news" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">News</a>
+    <a href="index.html#team" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Team</a>
+    <a href="index.html#contact" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Contact Us</a>
   </div>
 </nav>
 
@@ -1006,392 +1093,459 @@ a:hover {
     </p>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
+<!-- Card 1 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema One" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema One</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description One</p>
     </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
+    <div class="variant-selector flex gap-2 mb-4">
+      <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+      <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+      <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="2">Variant C</button>
     </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-	    <div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
-      <img src="https://via.placeholder.com/400x250" alt="Suprema Product" class="product-image rounded-lg" />
-      <div class="flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="product-title text-lg md:text-xl font-bold mb-2">FaceStation F2</h3>
-          <p class="product-desc text-white/80 text-sm md:text-base mb-3">Multimodal terminal - Variant A</p>
-        </div>
-        <div class="variant-selector flex gap-2 mb-4">
-          <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
-          <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
-        </div>
-        <div class="mt-4 flex flex-col sm:flex-row gap-3">
-          <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SUP-001-A" type="button">Add to Quote</button>
-          <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-            </svg>
-          </button>
-        </div>
-      </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-001" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
     </div>
   </div>
+</div>
+
+<!-- Card 2 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Two" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Two</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Two</p>
+    </div>
+    <div class="variant-selector flex gap-2 mb-4">
+      <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+      <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-002" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Three" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Three</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Three</p>
+    </div>
+    <!-- Variant selector removed because no variants -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-003" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Four" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Four</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Four</p>
+    </div>
+    <div class="variant-selector flex gap-2 mb-4">
+      <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+      <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-004" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Five" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Five</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Five</p>
+    </div>
+    <!-- Variant selector removed because no variants -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-005" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Six" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Six</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Six</p>
+    </div>
+    <!-- Variant selector removed because no variants -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-006" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Seven" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Seven</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Seven</p>
+    </div>
+    <div class="variant-selector flex gap-2 mb-4">
+      <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+      <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-007" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Eight" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Eight</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Eight</p>
+    </div>
+    <!-- Removed variant-selector since no variants -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-008" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Nine" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Nine</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Nine</p>
+    </div>
+    <!-- Removed variant-selector since no variants -->
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-009" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Ten" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Ten</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Ten</p>
+    </div>
+    <div class="variant-selector flex gap-2 mb-4">
+      <button class="variant-btn selected px-4 py-2 rounded-md bg-[#4BA3C7] text-white" data-variant-index="0">Variant A</button>
+      <button class="variant-btn px-4 py-2 rounded-md border border-white/50 text-white bg-transparent" data-variant-index="1">Variant B</button>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-010" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 11 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Eleven" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Eleven</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Eleven</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-011" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Twelve" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Twelve</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Twelve</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-012" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 13 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Thirteen" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Thirteen</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Thirteen</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-013" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 14 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Fourteen" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Fourteen</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Fourteen</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-014" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 15 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Fifteen" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Fifteen</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Fifteen</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-015" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 16 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Sixteen" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Sixteen</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Sixteen</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-016" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Card 17 -->
+<div class="album-card glass rounded-2xl p-6 text-white h-full flex flex-col">
+  <img src="https://via.placeholder.com/400x250" alt="Suprema Seventeen" class="product-image rounded-lg" />
+  <div class="flex-1 flex flex-col justify-between">
+    <div>
+      <h3 class="product-title text-lg md:text-xl font-bold mb-2">Suprema Seventeen</h3>
+      <p class="product-desc text-white/80 text-sm md:text-base mb-3">Suprema Description Seventeen</p>
+    </div>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 bg-[#4BA3C7] text-white font-semibold py-3 rounded-md btn-no-hover text-base add-to-quote-btn" data-product="SPA-017" type="button">Add to Quote</button>
+      <button class="learn-more-btn sm:w-12 w-full border border-white/40 text-white rounded-md btn-no-hover py-3" title="Learn More" data-brochure="suprema.pdf" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
 </section>
 
 <script>
   (function () {
     const section = document.getElementById('suprema');
-    const card = section.querySelector('.album-card');
-    const variantButtons = card.querySelectorAll('.variant-btn');
-    const desc = card.querySelector('.product-desc');
-    const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
+    if (!section) return;
 
-    const variants = [
-      { desc: 'Multimodal terminal - Variant A', productCode: 'SUP-001-A' },
-      { desc: 'Multimodal terminal - Variant B', productCode: 'SUP-001-B' }
+    const cards = section.querySelectorAll('.album-card');
+
+    // Variants data for all 17 cards in order (index 0 = Card 1, etc.)
+    const allVariants = [
+      // Card 1: 3 variants
+      [
+        { desc: 'Suprema Description One - Variant A', productCode: 'SPA-001-A' },
+        { desc: 'Suprema Description One - Variant B', productCode: 'SPA-001-B' },
+        { desc: 'Suprema Description One - Variant C', productCode: 'SPA-001-C' },
+      ],
+
+      // Card 2: 2 variants
+      [
+        { desc: 'Suprema Description Two - Variant A', productCode: 'SPA-002-A' },
+        { desc: 'Suprema Description Two - Variant B', productCode: 'SPA-002-B' },
+      ],
+
+      // Card 4: 2 variants
+      [
+        { desc: 'Suprema Description Four - Variant A', productCode: 'SPA-004-A' },
+        { desc: 'Suprema Description Four - Variant B', productCode: 'SPA-004-B' },
+      ],
+
+      // Card 7: 2 variants
+      [
+        { desc: 'Suprema Description Seven - Variant A', productCode: 'SPA-007-A' },
+        { desc: 'Suprema Description Seven - Variant B', productCode: 'SPA-007-B' },
+      ],
+
+      // Card 10: 2 variants
+      [
+        { desc: 'Suprema Description Ten - Variant A', productCode: 'SPA-010-A' },
+        { desc: 'Suprema Description Ten - Variant B', productCode: 'SPA-010-B' },
+      ],
+
+      // Card 14: 2 variants
+      [
+        { desc: 'Suprema Description Fourteen - Variant A', productCode: 'SPA-014-A' },
+        { desc: 'Suprema Description Fourteen - Variant B', productCode: 'SPA-014-B' }
+      ],
+
+      // Card 15: 2 variants
+      [
+        { desc: 'Suprema Description Fifteen - Variant A', productCode: 'SPA-015-A' },
+        { desc: 'Suprema Description Fifteen - Variant B', productCode: 'SPA-015-B' }
+      ],
+
+      // Card 16: 2 variants
+      [
+        { desc: 'Suprema Description Sixteen - Variant A', productCode: 'SPA-016-A' },
+        { desc: 'Suprema Description Sixteen - Variant B', productCode: 'SPA-016-B' }
+      ],
+
+      // Card 17: 2 variants
+      [
+        { desc: 'Suprema Description Seventeen - Variant A', productCode: 'SPA-017-A' },
+        { desc: 'Suprema Description Seventeen - Variant B', productCode: 'SPA-017-B' }
+      ],
     ];
 
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => b.classList.remove('selected', 'bg-[#4BA3C7]'));
-        btn.classList.add('selected', 'bg-[#4BA3C7]');
-        const index = +btn.dataset.variantIndex;
-        desc.textContent = variants[index].desc;
-        addToQuoteBtn.dataset.product = variants[index].productCode;
-      });
-    });
+    cards.forEach((card, index) => {
+      const variantButtons = card.querySelectorAll('.variant-btn');
+      const desc = card.querySelector('.product-desc');
+      const addToQuoteBtn = card.querySelector('.add-to-quote-btn');
 
-    addToQuoteBtn.addEventListener('click', () => {
-      const productCode = addToQuoteBtn.dataset.product;
-      console.log("Added to quote:", productCode);
+      // If no variant buttons, skip
+      if (variantButtons.length === 0) return;
+
+      const variants = allVariants[index] || [];
+
+      // Initialize first variant info on page load if variants exist
+      if (variants.length > 0) {
+        desc.textContent = variants[0].desc;
+        addToQuoteBtn.dataset.product = variants[0].productCode;
+      }
+
+      variantButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          variantButtons.forEach(b => {
+            b.classList.remove('selected', 'bg-[#4BA3C7]');
+            b.classList.add('bg-transparent');
+          });
+          btn.classList.add('selected', 'bg-[#4BA3C7]');
+          btn.classList.remove('bg-transparent');
+
+          const variantIndex = +btn.dataset.variantIndex;
+          if (variants[variantIndex]) {
+            desc.textContent = variants[variantIndex].desc;
+            addToQuoteBtn.dataset.product = variants[variantIndex].productCode;
+          }
+        });
+      });
+
+      addToQuoteBtn.addEventListener('click', () => {
+        const productCode = addToQuoteBtn.dataset.product;
+        console.log("Added to quote:", productCode);
+        // Replace with actual quote logic if needed
+      });
     });
   })();
 </script>
@@ -1754,203 +1908,260 @@ a:hover {
 </button>
 
 <script>
-  // ------------------------
-  // 🌐 Mobile menu toggle
-  // ------------------------
-  const navToggle = document.getElementById('nav-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
+// ------------------------
+// 🌐 Mobile menu toggle
+// ------------------------
+const navToggle = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-  navToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+navToggle.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', (!expanded).toString());
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    navToggle.setAttribute('aria-expanded', 'false');
   });
+});
 
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+document.addEventListener('click', (e) => {
+  if (!mobileMenu.classList.contains('hidden')) {
+    const clickedInsideNav = e.target.closest('nav');
+    const clickedInsideMenu = e.target.closest('#mobile-menu');
+    if (!clickedInsideNav && !clickedInsideMenu) {
       mobileMenu.classList.add('hidden');
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!mobileMenu.classList.contains('hidden')) {
-      const clickedInsideNav = e.target.closest('nav');
-      const clickedInsideMenu = e.target.closest('#mobile-menu');
-      if (!clickedInsideNav && !clickedInsideMenu) {
-        mobileMenu.classList.add('hidden');
-      }
+      navToggle.setAttribute('aria-expanded', 'false');
     }
-  });
+  }
+});
 
-  // ------------------------
-  // 🛒 Quote basket logic with persistence and cross-tab sync
-  // ------------------------
+// ------------------------
+// 🛒 Quote basket logic with persistence and cross-tab sync
+// ------------------------
+const TAB_KEY = "shared";
+const STORAGE_KEY = `quote_basket_${TAB_KEY}`;
 
-  const TAB_KEY = "shared";
-  const STORAGE_KEY = `quote_basket_${TAB_KEY}`;
+const basketBtn = document.getElementById('basket-btn');
+const cartModal = document.getElementById('cart-modal');
+const cartCloseBtn = document.getElementById('cart-close-btn');
+const cartItemsList = document.getElementById('cart-items');
+const cartClearBtn = document.getElementById('cart-clear-btn');
+const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 
-  const basketBtn = document.getElementById('basket-btn');
-  const cartModal = document.getElementById('cart-modal');
-  const cartCloseBtn = document.getElementById('cart-close-btn');
-  const cartItemsList = document.getElementById('cart-items');
-  const cartClearBtn = document.getElementById('cart-clear-btn');
-  const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+// Load saved cart or start empty
+let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-  // Load saved cart or start empty
-  let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+function saveCart() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
+}
 
-  function saveCart() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
+function renderCart() {
+  cartItemsList.innerHTML = '';
+  if (cartItems.length === 0) {
+    cartItemsList.innerHTML = '<li>Your quote basket is empty.</li>';
+    return;
   }
 
-  function renderCart() {
-    cartItemsList.innerHTML = '';
-    if (cartItems.length === 0) {
-      cartItemsList.innerHTML = '<li>Your quote basket is empty.</li>';
-      return;
-    }
+  cartItems.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="left-side">${item.name}</div>
+      <div class="quantity-remove-container">
+        <input type="number" min="1" value="${item.qty}" data-index="${index}" />
+        <button class="remove-item" aria-label="Remove ${item.name}" data-index="${index}">&times;</button>
+      </div>
+    `;
+    cartItemsList.appendChild(li);
+  });
 
-    cartItems.forEach((item, index) => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <div class="left-side">${item.name}</div>
-        <div class="quantity-remove-container">
-          <input type="number" min="1" value="${item.qty}" data-index="${index}" />
-          <button class="remove-item" aria-label="Remove ${item.name}" data-index="${index}">&times;</button>
-        </div>
-      `;
-      cartItemsList.appendChild(li);
-    });
-
-    // Quantity update
-    cartItemsList.querySelectorAll('input[type="number"]').forEach(input => {
-      input.addEventListener('change', (e) => {
-        const idx = e.target.dataset.index;
-        let val = parseInt(e.target.value, 10);
-        if (isNaN(val) || val < 1) val = 1;
-        cartItems[idx].qty = val;
-        saveCart();
-        renderCart();
-      });
-    });
-
-    // Remove item
-    cartItemsList.querySelectorAll('.remove-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const idx = e.target.dataset.index;
-        cartItems.splice(idx, 1);
-        saveCart();
-        renderCart();
-      });
-    });
-
-    saveCart();
-  }
-
-  document.querySelectorAll('.add-to-quote-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productName = btn.dataset.product;
-      const existingIndex = cartItems.findIndex(item => item.name === productName);
-      if (existingIndex >= 0) {
-        cartItems[existingIndex].qty++;
-      } else {
-        cartItems.push({ name: productName, qty: 1 });
-      }
+  // Quantity update
+  cartItemsList.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const idx = e.target.dataset.index;
+      let val = parseInt(e.target.value, 10);
+      if (isNaN(val) || val < 1) val = 1;
+      cartItems[idx].qty = val;
       saveCart();
       renderCart();
     });
   });
 
-  basketBtn?.addEventListener('click', () => {
-    cartModal.classList.toggle('open');
-  });
-
-  cartCloseBtn?.addEventListener('click', () => {
-    cartModal.classList.remove('open');
-  });
-
-  cartClearBtn?.addEventListener('click', () => {
-    cartItems = [];
-    saveCart();
-    renderCart();
-  });
-
-  cartCheckoutBtn?.addEventListener('click', () => {
-    if (cartItems.length === 0) {
-      alert('Your quote basket is empty.');
-      return;
-    }
-
-    let emailBody = 'Hello,%0D%0A%0D%0AI would like to request a quote for the following items:%0D%0A';
-
-    cartItems.forEach(item => {
-      emailBody += `- ${item.name} (Quantity: ${item.qty})%0D%0A`;
-    });
-
-    emailBody += '%0D%0AThank you.';
-
-    // Clear cart before opening mail client
-    cartItems = [];
-    saveCart();
-    renderCart();
-
-    window.location.href = `mailto:sales@saflecsystems.co.za?subject=Quote Request&body=${emailBody}`;
-  });
-
-  // Remove these lines that clear cart on reload/unload
-  // localStorage.removeItem(STORAGE_KEY);
-  // window.addEventListener('beforeunload', () => {
-  //   localStorage.removeItem(STORAGE_KEY);
-  // });
-
-  // Sync cart between tabs in real-time
-  window.addEventListener('storage', (event) => {
-    if (event.key === STORAGE_KEY) {
-      cartItems = JSON.parse(event.newValue) || [];
+  // Remove item
+  cartItemsList.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const idx = e.target.dataset.index;
+      cartItems.splice(idx, 1);
+      saveCart();
       renderCart();
-    }
+    });
   });
 
-  // 🚀 On page load
-  renderCart();
+  saveCart();
+}
 
-  // ------------------------
-  // Tabs toggle logic
-  // ------------------------
-  const tabSaflecBtn = document.getElementById('tab-saflec');
-  const tabThirdPartyBtn = document.getElementById('tab-third-party');
-  const saflecSection = document.getElementById('saflec-systems');
-  const thirdPartySection = document.getElementById('third-party-products');
-
-  function selectTab(tab) {
-    if (tab === 'saflec') {
-      saflecSection.classList.remove('hidden');
-      thirdPartySection.classList.add('hidden');
-
-      tabSaflecBtn.setAttribute('aria-selected', 'true');
-      tabSaflecBtn.classList.add('bg-[#4BA3C7]');
-      tabSaflecBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
-
-      tabThirdPartyBtn.setAttribute('aria-selected', 'false');
-      tabThirdPartyBtn.classList.remove('bg-[#4BA3C7]');
-      tabThirdPartyBtn.classList.add('bg-transparent', 'border', 'border-white/50');
-    } else if (tab === 'third-party') {
-      saflecSection.classList.add('hidden');
-      thirdPartySection.classList.remove('hidden');
-
-      tabThirdPartyBtn.setAttribute('aria-selected', 'true');
-      tabThirdPartyBtn.classList.add('bg-[#4BA3C7]');
-      tabThirdPartyBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
-
-      tabSaflecBtn.setAttribute('aria-selected', 'false');
-      tabSaflecBtn.classList.remove('bg-[#4BA3C7]');
-      tabSaflecBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+document.querySelectorAll('.add-to-quote-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const productName = btn.dataset.product;
+    const existingIndex = cartItems.findIndex(item => item.name === productName);
+    if (existingIndex >= 0) {
+      cartItems[existingIndex].qty++;
+    } else {
+      cartItems.push({ name: productName, qty: 1 });
     }
+    saveCart();
+    renderCart();
+  });
+});
+
+basketBtn?.addEventListener('click', () => {
+  cartModal.classList.toggle('open');
+});
+
+cartCloseBtn?.addEventListener('click', () => {
+  cartModal.classList.remove('open');
+});
+
+cartClearBtn?.addEventListener('click', () => {
+  cartItems = [];
+  saveCart();
+  renderCart();
+});
+
+cartCheckoutBtn?.addEventListener('click', () => {
+  if (cartItems.length === 0) {
+    alert('Your quote basket is empty.');
+    return;
   }
 
-  // Initialize default tab
-  selectTab('saflec');
+  let emailBody = 'Hello,%0D%0A%0D%0AI would like a quote for the following items:%0D%0A';
 
-  tabSaflecBtn.addEventListener('click', () => selectTab('saflec'));
-  tabThirdPartyBtn.addEventListener('click', () => selectTab('third-party'));
+  cartItems.forEach(item => {
+    emailBody += `- ${item.name} (Quantity: ${item.qty})%0D%0A`;
+  });
+
+  emailBody += '%0D%0AThank you.';
+
+  // Clear cart before opening mail client
+  cartItems = [];
+  saveCart();
+  renderCart();
+
+  window.location.href = `mailto:sales@saflecsystems.co.za?subject=Website Quote&body=${emailBody}`;
+});
+
+// Sync cart between tabs in real-time
+window.addEventListener('storage', (event) => {
+  if (event.key === STORAGE_KEY) {
+    cartItems = JSON.parse(event.newValue) || [];
+    renderCart();
+  }
+});
+
+// 🚀 On page load
+renderCart();
+
+// ------------------------
+// Tabs toggle logic
+// ------------------------
+const tabSaflecBtn = document.getElementById('tab-saflec');
+const tabThirdPartyBtn = document.getElementById('tab-third-party');
+const saflecSection = document.getElementById('saflec-systems');
+const thirdPartySection = document.getElementById('third-party-products');
+
+function selectTab(tab) {
+  if (tab === 'saflec') {
+    saflecSection.classList.remove('hidden');
+    thirdPartySection.classList.add('hidden');
+
+    tabSaflecBtn.setAttribute('aria-selected', 'true');
+    tabSaflecBtn.classList.add('bg-[#4BA3C7]');
+    tabSaflecBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+
+    tabThirdPartyBtn.setAttribute('aria-selected', 'false');
+    tabThirdPartyBtn.classList.remove('bg-[#4BA3C7]');
+    tabThirdPartyBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+  } else if (tab === 'third-party') {
+    saflecSection.classList.add('hidden');
+    thirdPartySection.classList.remove('hidden');
+
+    tabThirdPartyBtn.setAttribute('aria-selected', 'true');
+    tabThirdPartyBtn.classList.add('bg-[#4BA3C7]');
+    tabThirdPartyBtn.classList.remove('bg-transparent', 'border', 'border-white/50');
+
+    tabSaflecBtn.setAttribute('aria-selected', 'false');
+    tabSaflecBtn.classList.remove('bg-[#4BA3C7]');
+    tabSaflecBtn.classList.add('bg-transparent', 'border', 'border-white/50');
+  }
+}
+
+// Initialize default tab
+selectTab('saflec');
+
+tabSaflecBtn.addEventListener('click', () => selectTab('saflec'));
+tabThirdPartyBtn.addEventListener('click', () => selectTab('third-party'));
+
+// ------------------------
+// Desktop Products dropdown toggle logic
+// ------------------------
+const productsBtn = document.getElementById('products-btn');
+const productsMenu = document.getElementById('desktopProductsDropdown'); // fixed ID
+
+if (productsBtn && productsMenu) {
+  productsBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent navigation when toggling dropdown
+
+    const expanded = productsBtn.getAttribute('aria-expanded') === 'true';
+    productsBtn.setAttribute('aria-expanded', (!expanded).toString());
+
+    if (!expanded) {
+      productsMenu.classList.remove('hidden');
+      productsBtn.querySelector('svg').classList.add('rotate-180');
+    } else {
+      productsMenu.classList.add('hidden');
+      productsBtn.querySelector('svg').classList.remove('rotate-180');
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!productsBtn.contains(e.target) && !productsMenu.contains(e.target)) {
+      productsBtn.setAttribute('aria-expanded', 'false');
+      productsMenu.classList.add('hidden');
+      productsBtn.querySelector('svg').classList.remove('rotate-180');
+    }
+  });
+
+  // ------------------------
+  // Smooth scroll for dropdown links with offset for fixed header
+  // ------------------------
+  const NAVBAR_HEIGHT = 90; // Adjust this to your actual fixed header height in px
+
+  productsMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetEl = document.getElementById(targetId);
+
+      if (targetEl) {
+        const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - NAVBAR_HEIGHT;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+
+        // Close dropdown after click
+        productsMenu.classList.add('hidden');
+        productsBtn.setAttribute('aria-expanded', 'false');
+        productsBtn.querySelector('svg').classList.remove('rotate-180');
+      }
+    });
+  });
+}
 </script>
 
 </body>
