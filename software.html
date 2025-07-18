@@ -558,7 +558,7 @@ a:hover {
       return;
     }
 
-    let emailBody = 'Hello,%0D%0A%0D%0AI would like to request a quote for the following items:%0D%0A';
+    let emailBody = 'Hello,%0D%0A%0D%0AI would like a quote for the following items:%0D%0A';
 
     cartItems.forEach(item => {
       emailBody += `- ${item.name} (Quantity: ${item.qty})%0D%0A`;
@@ -571,7 +571,7 @@ a:hover {
     saveCart();
     renderCart();
 
-    window.location.href = `mailto:sales@saflecsystems.co.za?subject=Quote Request&body=${emailBody}`;
+    window.location.href = `mailto:sales@saflecsystems.co.za?subject=Website Quote&body=${emailBody}`;
   });
 
   // Sync cart between tabs in real-time
