@@ -252,10 +252,11 @@ a:hover {
     padding: 0.5rem;
   }
 
-  /* Align mobile menu links to the right */
+  /* Align mobile menu links to the center */
   #mobile-menu a {
-    text-align: right;
+    text-align: center;
   }
+}
   </style>
   
 </head>
@@ -300,7 +301,7 @@ a:hover {
         </button>
         <div
           id="desktopProductsDropdown"
-          class="absolute left-0 hidden mt-2 glass rounded-xl w-44 z-50 text-sm shadow-lg"
+          class="absolute left-0 hidden mt-2 rounded-xl w-44 z-50 text-sm shadow-lg"
           role="menu"
           aria-label="Products submenu"
         >
@@ -343,42 +344,7 @@ a:hover {
     <a href="index.html#top" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Home</a>
     <a href="index.html#about" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">About</a>
     <a href="index.html#partners" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Partners</a>
-
-    <!-- Mobile Products Dropdown -->
-    <details class="group glass rounded-xl p-2" role="group" aria-label="Products submenu">
-      <summary
-        class="flex justify-between items-center py-3 cursor-pointer text-black font-semibold hover:text-white list-none"
-        role="button"
-        aria-expanded="false"
-        aria-controls="mobile-products-list"
-      >
-        Products
-        <svg
-          class="h-5 w-5 stroke-current transition-transform duration-200 group-open:rotate-180"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M19 9l-7 7-7-7" />
-        </svg>
-      </summary>
-      <div
-        id="mobile-products-list"
-        class="pl-4 space-y-1 mt-1"
-        role="menu"
-      >
-        <a href="#hikvision" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Hikvision</a>
-        <a href="#idemia" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Idemia</a>
-        <a href="#stid" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Stid</a>
-        <a href="#suprema" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Suprema</a>
-        <a href="#virdi" class="block py-2 text-black font-semibold hover:text-white" role="menuitem">Virdi</a>
-      </div>
-    </details>
-
+    <a href="index.html#products" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Products</a>
     <a href="index.html#resources" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Resources</a>
     <a href="index.html#news" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">News</a>
     <a href="index.html#team" class="block py-3 text-black font-semibold hover:text-white" role="menuitem">Team</a>
